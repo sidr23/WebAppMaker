@@ -176,5 +176,19 @@
                     }
                 )
         }
+
+        function init () {
+            WebsiteService
+                .findWebsitesForDeveloperId ($routeParams.developerId)
+                .then (
+                    function (response) {
+                        vm.websites = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                )
+        }
+        init ();
     }
 })();
