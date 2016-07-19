@@ -232,3 +232,24 @@ th {
     padding-right: 10px;
     padding-left: 10px
 }
+
+/*Added by @manasa-konidena*/
+
+li.link-nav{
+    display: inline;
+}
+
+.back{
+    float: left;
+    width: 15%;
+}
+
+.name{
+    float: left;
+    width: 70%;
+}
+
+.plus{
+    float: left;
+    width: 15%;
+}
