@@ -131,9 +131,10 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.viewType = 'list';
-
+		vm.sortBy = 'name';
+		vm.sortOrder = 'asc';
         vm.toggleView    = toggleView;
-
+		
         function init () {
             WebsiteService
                 .findWebsitesForDeveloperId ($routeParams.developerId)
@@ -151,6 +152,21 @@
         function toggleView() {
             vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
+		
+		vm.sortList = function(by, ordr){
+			by = (by == '')?vm.sortBy:by;
+			ordr = (ordr == '')?vm.sortOrder:ordr;
+			vm.websites = sortByOrder(vm.websites, ordr);
+		}
+		
+		function sortByOrder(arr, ordr){
+			return arr.sort(function (w1, w2){
+				if(ordr == 'asc')
+					return w1.name > w2.name;
+				else return w1.name < w2.name;
+			});
+		}
+		
     }
 
     function newWebsiteController (

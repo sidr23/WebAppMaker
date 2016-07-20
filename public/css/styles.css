@@ -232,3 +232,13 @@ th {
     padding-right: 10px;
     padding-left: 10px
 }
+#sort-options button {
+    background : transparent;
+    border : none !important;
+}
+#sort-options ul li a{
+	color : gray;
+}
+#sort-options ul li:hover,#sort-options ul:active{
+	color : black;
+}
