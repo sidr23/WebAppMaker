@@ -1,4 +1,9 @@
+<div class="vr hidden-xs">&nbsp;</div>
+
 <nav class="navbar navbar-default navbar-fixed-top jga">
+
+    <!--Hidden in extra small devices-->
+
     <div class="navbar-header hidden-xs">
 
         <a href="#/developer/{{currentUser._id}}/website"
@@ -24,6 +29,8 @@
         </a>
     </div>
 
+    <!--Only visible in extra small devices-->
+
     <div class="visible-xs">
         <a href="#/developer/{{currentUser._id}}/website/{{model.websiteId}}/page"
            class="btn btn-default btn-transparent pull-left padding">
@@ -40,7 +47,9 @@
 </nav>
 
 
+
 <div class="row">
+    <!--Hidden in extra small devices-->
     <div class="col-sm-4  hidden-xs">
         <div ng-if="model.error"
              class="alert alert-danger"
@@ -91,6 +100,7 @@
     </div>
 
 
+    <!--Always visible in all devices-->
     <div class="col-sm-8">
         <div class="form-group">
             <label for="pageName">Name</label>
@@ -109,6 +119,8 @@
 </div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jga">
+
+    <!--Hidden in extra small devices-->
     <div class="navbar-header hidden-xs">
 
         <a ng-click="model.toggleView()"
@@ -117,23 +129,34 @@
             <span class="glyphicon glyphicon-th-list" ng-show="model.viewType == 'grid'"></span>
         </a>
 
-        <a href="#"
-           class="btn btn-default btn-transparent pull-left">
+        <a class="btn btn-default btn-transparent pull-left">
             <span class="glyphicon glyphicon-sort-by-alphabet"></span>
         </a>
+    </div>
 
-        <a href="#"
-           class="btn btn-default btn-transparent">
-            <span class="glyphicon glyphicon-chevron-left"></span>
+    <!--Visible in extra small devices-->
+    <div class="navbar-header visible-xs">
+        <a href="#/developer"
+           class="navbar-toggle collapsed">
+            <span class="glyphicon glyphicon-user padding"></span>
         </a>
-
     </div>
 
 
-    <div class="landscape-right hidden-xs">
-        <a href="#"
-           class="btn btn-default btn-transparent padding">
+    <!--Hidden in extra small devices-->
+    <div class="landscape-right-offset hidden-xs">
+
+        <a class="btn btn-default btn-transparent padding">
+            <span class="glyphicon glyphicon-chevron-left try"></span>
+        </a>
+
+        <a class="btn btn-default btn-transparent padding">
             <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+
+        <a href="#/developer/{{currentUser.username}}/edit"
+           class="navbar-toggle collapsed">
+            <span class="glyphicon glyphicon-user"></span>
         </a>
 
     </div>
