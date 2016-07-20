@@ -305,8 +305,10 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.websiteId = $routeParams.websiteId;
+        vm.viewType = 'list';
 
         vm.sortPage      = sortPage;
+        vm.toggleView    = toggleView;
 
         function init() {
             WebsiteService
@@ -343,6 +345,10 @@
                     }
                 );
         }
+        
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
     }
 
     function newPageController($routeParams, WebsiteService, PageService, $location) {
@@ -351,6 +357,11 @@
         vm.developerId = $routeParams.developerId;
         vm.websiteId = $routeParams.websiteId;
         vm.createPage = createPage;
+
+        vm.viewType = 'list';
+
+        vm.sortPage      = sortPage;
+        vm.toggleView    = toggleView;
 
         function init() {
             WebsiteService
@@ -385,6 +396,22 @@
                         $location.url("/developer/"+vm.developerId+"/website/"+vm.websiteId+"/page");
                     }
                 )
+        }
+
+        function sortPage(start, end) {
+            PageService
+                .sortPage(vm.websiteId, start, end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
     }
 

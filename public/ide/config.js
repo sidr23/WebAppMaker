@@ -100,7 +100,7 @@
                 resolve: { loggedin: checkLoggedin }
             })
             .when ("/developer/:developerId/website/:websiteId/page/new", {
-                templateUrl: "views/page/page-new-landscape.view.html",
+                templateUrl: "views/page/page-new.view.html",
                 controller: "NewPageController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
