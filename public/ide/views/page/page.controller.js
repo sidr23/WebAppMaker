@@ -259,6 +259,27 @@
         vm.removePage    = removePage;
         vm.updatePage    = updatePage;
 
+        vm.viewType = 'list';
+
+        vm.sortPage      = sortPage;
+        vm.toggleView    = toggleView;
+
+        function sortPage(start, end) {
+            PageService
+                .sortPage(vm.websiteId, start, end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
+
         function init() {
             PageService
                 .findPage(vm.websiteId, vm.pageId)
