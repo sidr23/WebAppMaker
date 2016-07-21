@@ -159,6 +159,10 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.createWebsite = createWebsite;
+        vm.viewType = 'list';
+
+        vm.toggleView    = toggleView;
+
 
         function createWebsite (website) {
             if(!website)
@@ -177,6 +181,7 @@
                 )
         }
 
+
         function init () {
             WebsiteService
                 .findWebsitesForDeveloperId ($routeParams.developerId)
@@ -190,5 +195,9 @@
                 )
         }
         init ();
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
     }
 })();
