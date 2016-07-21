@@ -83,6 +83,13 @@
         vm.websiteId = $routeParams.websiteId;
         vm.removeWebsite = removeWebsite;
         vm.updateWebsite = updateWebsite;
+        vm.viewType = 'list';
+
+        vm.toggleView    = toggleView;
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
 
         function init () {
             WebsiteService
