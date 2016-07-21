@@ -77,16 +77,28 @@
         </a>
 		
 		<span class="dropup" id="sort-options">
-			<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
-				<span class="glyphicon glyphicon-chevron-up"></span><br/>AZ<br/><span class="glyphicon glyphicon-chevron-down"></span>
+			<button class="btn btn-default dropdown-toggle" id="sort-button" type="button" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+				<div id="sort-button-text">AZ</div>
+				<span class="glyphicon glyphicon-chevron-down"></span>
 			</button>
+		<!--<ul class="dropdown-menu">
+			  <li><a ng-click="model.sortList('name', '')">Last Modified</a></li>
+			  <li><a ng-click="model.sortList('name', '')">Name</a></li>
+			  <li><div class="checkbox" ng-click="model.sortList('', 'asc')"><label><input type="checkbox">Ascending</label></div></li>
+			  <li><a ng-click="model.sortList('', 'desc')"><input type="checkbox">&nbsp;&nbsp;&nbsp;Descending</a></li>
+			</ul>-->
 			<ul class="dropdown-menu">
-			  <li><a ng-click="model.sortList('name', '')">Sort by Last Modified</a></li>
-			  <li><a ng-click="model.sortList('name', '')">Sort by Name</a></li>
-			  <li><a ng-click="model.sortList('', 'asc')" class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Ascending </a></li>
-			  <li><a ng-click="model.sortList('', 'desc')"class="radio-inline"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Descending </a></li>
-			  <li><a ng-click="model.sortList('', 'asc')">Ascending&nbsp;&nbsp;&nbsp;<input type="checkbox"></a></li>
-			  <li><a ng-click="model.sortList('', 'desc')">Descending&nbsp;&nbsp;&nbsp;<input type="checkbox"></a></li>
+				<li>
+					<span id="list-label" ng-click="$event.stopPropagation()" id="list-option-text">Last Modified</span>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes-alt" ng-click="model.sortList('lstMod', 'desc')"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes" ng-click="model.sortList('lstMod', 'asc')"/>
+				</li>
+				<li>
+					<span id="list-label" ng-click="$event.stopPropagation()">Name</span>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet-alt" ng-click="model.sortList('name', 'desc')"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet" ng-click="model.sortList('name', 'asc')"/>
+				</li>
 			</ul>
 		</span>
     </div>

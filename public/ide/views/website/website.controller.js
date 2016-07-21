@@ -131,8 +131,6 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.viewType = 'list';
-		vm.sortBy = 'name';
-		vm.sortOrder = 'asc';
         vm.toggleView    = toggleView;
 		
         function init () {
@@ -154,8 +152,6 @@
         }
 		
 		vm.sortList = function(by, ordr){
-			by = (by == '')?vm.sortBy:by;
-			ordr = (ordr == '')?vm.sortOrder:ordr;
 			vm.websites = sortByOrder(vm.websites, ordr);
 		}
 		
