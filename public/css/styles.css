@@ -246,7 +246,7 @@ th {
 }
 #sort-options ul li span#list-icon{
 	 padding: 5px 20px 5px 5px;
-	 border-radius: 25%;
+	 border-radius: 30%;
      border: 1px solid #000;
 	 cursor : pointer;
 	 float : right;

@@ -18,7 +18,7 @@
 </div>
 
 <div>
-    <div ng-repeat="website in model.websites" ng-show="model.viewType == 'list'"
+    <div ng-repeat="website in model.websites | orderBy : model.sortBy : model.reverse" ng-show="model.viewType == 'list'"
          class="row jga-bg-highlight-on-hover" style="padding: 8px">
         <div class="col-xs-10">
             <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page">
@@ -39,7 +39,7 @@
 
     <div ng-show="model.viewType == 'grid'">
         <div class="row">
-            <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites">
+            <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites | orderBy : model.sortBy : model.reverse">
                 <div class="thumbnail">
                     <img src="" alt="...">
                     <div class="caption">
@@ -91,13 +91,13 @@
 			<ul class="dropdown-menu">
 				<li>
 					<span id="list-label" ng-click="$event.stopPropagation()" id="list-option-text">Last Modified</span>
-					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes-alt" ng-click="model.sortList('lstMod', 'desc')"/>
-					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes" ng-click="model.sortList('lstMod', 'asc')"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes-alt" ng-click="model.sortList('dateModified', true)"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes" ng-click="model.sortList('dateModified', false)"/>
 				</li>
 				<li>
 					<span id="list-label" ng-click="$event.stopPropagation()">Name</span>
-					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet-alt" ng-click="model.sortList('name', 'desc')"/>
-					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet" ng-click="model.sortList('name', 'asc')"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet-alt" ng-click="model.sortList('name', true)"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet" ng-click="model.sortList('name', false)"/>
 				</li>
 			</ul>
 		</span>
