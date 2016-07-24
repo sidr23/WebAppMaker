@@ -274,6 +274,7 @@
         init();
 
         function updatePage(page) {
+			page.dateModified = Date();
             PageService
                 .updatePage(page._id, page)
                 .then(
@@ -306,7 +307,8 @@
         vm.developerId = $routeParams.developerId;
         vm.websiteId = $routeParams.websiteId;
         vm.viewType = 'list';
-
+		vm.sortBy = 'name';
+		vm.reverse = false;
         vm.sortPage      = sortPage;
         vm.toggleView    = toggleView;
 
@@ -349,6 +351,11 @@
         function toggleView() {
             vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
+		
+		vm.sortList = function(by, reverse){				
+			vm.sortBy = by;
+			vm.reverse = reverse;
+		}
     }
 
     function newPageController($routeParams, PageService, $location) {

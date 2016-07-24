@@ -9,7 +9,8 @@ module.exports = function () {
         name: String,
         title: String,
         widgets: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Widget' }],
-        dateCreated: {type: Date, default: Date.now}
+        dateCreated: {type: Date, default: Date.now},
+		dateModified: {type: Date, default: Date.now}
     });
 
     return PageSchema;
