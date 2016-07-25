@@ -256,7 +256,9 @@
     </div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom jga">
-    <div class="navbar-header" style="float:left">
+    <div class="navbar-header" style="width: 68.4%; float:left">
+
+
 
         <a href="#/developer/{{currentUser._id}}"
            class="navbar-toggle collapsed">
@@ -274,10 +276,20 @@
            class="btn btn-default btn-transparent pull-left">
             <span class="glyphicon glyphicon-eye-open"></span>
         </a>
+
+        <a class="btn btn-default btn-transparent padding pull-right">
+            <span class="glyphicon glyphicon-chevron-left try"></span>
+        </a>
+
         </div>
-    <div style="width: 31.6%; float:right; border-left: 1px #2e6da4 solid;  padding: 2px;">
+    <div class="navbar-header" style="width: 31.6%; float:right; border-left: 1px #2e6da4 solid; ">
+        <a class="btn btn-default btn-transparent padding pull-left">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+
+
         <a ng-click="model.toggleView()"
-           class="btn btn-default btn-transparent pull-right">
+           class="btn btn-default btn-transparent">
             <span class="glyphicon glyphicon-th" ng-show="model.viewType == 'list'"></span>
             <span class="glyphicon glyphicon-th-list" ng-show="model.viewType == 'grid'"></span>
         </a>
