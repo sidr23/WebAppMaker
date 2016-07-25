@@ -111,25 +111,7 @@ module.exports = function(models) {
 
     function saveStatement(scope, statement) {
         statement._script = scope.scriptId;
-
-        if(scope.scriptId === 'new') {
-            scriptModel
-                .saveScript(scope.script)
-                .then(
-                    function(script) {
-                        return Statement
-                            .create(statement)
-                            .then(
-                                function(statement) {
-                                    return statement
-                                        .populate('_script');
-                                },
-                                function(err){
-                                    console.log(err);
-                                }
-                            );                    }
-                )
-        } else {
+        
             if(scope.statementId === 'new') {
                 return Statement
                     .create(statement)
