@@ -111,7 +111,7 @@ module.exports = function(models) {
 
     function saveStatement(scope, statement) {
         statement._script = scope.scriptId;
-        
+
             if(scope.statementId === 'new') {
                 return Statement
                     .create(statement)
@@ -130,5 +130,4 @@ module.exports = function(models) {
                     .populate('_script');
             }
         }
-    }
 };
