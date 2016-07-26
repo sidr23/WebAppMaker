@@ -79,11 +79,13 @@
         vm.developerId   = $routeParams.developerId;
         vm.websiteId      = $routeParams.websiteId;
         vm.pageId         = $routeParams.pageId;
+        vm.viewType = 'list';
 
         vm.safeYouTubeUrl = safeYouTubeUrl;
         vm.getButtonClass = getButtonClass;
         vm.sortWidget     = sortWidget;
         vm.trustAsHtml    = trustAsHtml;
+        vm.toggleView    = toggleView;
 
         function init() {
             PageService
@@ -139,6 +141,10 @@
                         vm.error = err;
                     }
                 );
+        }
+        
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
 
     }
