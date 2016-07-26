@@ -1,8 +1,41 @@
-<nav class="navbar navbar-default navbar-fixed-top jga">
-    <div class="navbar-header">
+<div class="vr hidden-xs">&nbsp;</div>
 
-        <a href="#/developer/{{model.developerId}}/website"
+<nav class="navbar navbar-default navbar-fixed-top jga">
+
+    <!--Hidden in extra small devices-->
+
+    <div class="navbar-header hidden-xs">
+
+        <a href="#/developer"
            class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+
+        <a class="navbar-brand">Websites</a>
+
+        <a href="#/developer/{{model.developerId}}/website/new"
+           class="btn btn-default btn-transparent">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+
+    </div>
+
+    <div class="hidden-xs landscape-right">
+        <a class="navbar-brand">New Webite</a>
+
+        <button form="websiteForm"
+                type="submit"
+                ng-click="model.createWebsite (model.website)"
+                class="btn btn-default btn-transparent padding">
+            <span class="glyphicon glyphicon-ok"></span>
+        </button>
+    </div>
+
+    <!--Only visible in extra small devices-->
+
+    <div class="visible-xs">
+        <a href="#/developer/{{currentUser._id}}/website"
+           class="btn btn-default btn-transparent pull-left padding">
             <span class="glyphicon glyphicon-chevron-left"></span>
         </a>
 
@@ -11,40 +44,132 @@
         <button form="websiteForm"
                 type="submit"
                 ng-click="model.createWebsite (model.website)"
-                class="btn btn-default btn-transparent pull-right">
+                class="btn btn-default btn-transparent padding">
             <span class="glyphicon glyphicon-ok"></span>
         </button>
-
     </div>
 </nav>
 
-<form name="websiteForm" id="websiteForm" novalidate>
+<div class="row">
+    <!--Hidden in extra small devices-->
+    <div class="col-sm-4  hidden-xs">
+        <div ng-if="model.error"
+             class="alert alert-danger"
+             role="alert">
+            {{model.error}}
+        </div>
 
-    <div class="form-group">
-        <label for="name">Name</label>
-        <input ng-model="model.website.name"
-               class="form-control" id="name"
-               placeholder="Name" name="name" required/>
-    </div>
-    <div ng-show="websiteForm.$submitted && websiteForm.name.$invalid">
-        Website name is required
+        <div ng-repeat="website in model.websites" ng-show="model.viewType == 'list'"
+             class="row jga-bg-highlight-on-hover" style="padding: 8px">
+            <div class="col-xs-10">
+                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page">
+                    {{website.name}}
+                </a>
+            </div>
+            <!--<a href="#/developer/{{model.developerId}}/website/{{website._id}}/page/{{website.pages[0]._id}}/run"-->
+            <!--class="pull-right">-->
+            <!--<span class="glyphicon glyphicon-play"></span>-->
+            <!--</a>-->
+            <div class="customPadding col-xs-1">
+                <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+                   class="pull-right">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+            </div>
+        </div>
+
+        <div ng-show="model.viewType == 'grid'">
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites">
+                    <div class="thumbnail">
+                        <img src="" alt="...">
+                        <div class="caption">
+                            <p>
+                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
+                                    {{website.name}}
+                                </a>
+
+                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+                                   class="pull-right">
+                                    <span class="glyphicon glyphicon-cog"></span>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
-    <div class="form-group">
-        <label for="description">Description</label>
+
+    <!--Always visible in all devices-->
+    <div class="col-sm-8">
+        <form name="websiteForm" id="websiteForm" novalidate>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input ng-model="model.website.name"
+                       class="form-control" id="name"
+                       placeholder="Name" name="name" required/>
+            </div>
+            <div ng-show="websiteForm.$submitted && websiteForm.name.$invalid">
+                Website name is required
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
     <textarea ng-model="model.website.description"
               rows="5" id="description"
               class="form-control"
               placeholder="Description"></textarea>
-    </div>
+            </div>
 
-</form>
+        </form>
+    </div>
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jga">
-    <div class="navbar-header">
-        <a href="#/developer/{{model.developerId}}"
+
+    <!--Hidden in extra small devices-->
+    <div class="navbar-header hidden-xs">
+
+        <a ng-click="model.toggleView()"
+           class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-th" ng-show="model.viewType == 'list'"></span>
+            <span class="glyphicon glyphicon-th-list" ng-show="model.viewType == 'grid'"></span>
+        </a>
+
+        <a class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-sort-by-alphabet"></span>
+        </a>
+    </div>
+
+    <!--Visible in extra small devices-->
+    <div class="navbar-header visible-xs">
+        <a href="#/developer"
+           class="navbar-toggle collapsed">
+            <span class="glyphicon glyphicon-user padding"></span>
+        </a>
+    </div>
+
+
+    <!--Hidden in extra small devices-->
+    <div class="landscape-right-offset hidden-xs">
+
+        <a class="btn btn-default btn-transparent padding">
+            <span class="glyphicon glyphicon-chevron-left try"></span>
+        </a>
+
+        <a class="btn btn-default btn-transparent padding">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+
+        <a href="#/developer/{{currentUser.username}}/edit"
            class="navbar-toggle collapsed">
             <span class="glyphicon glyphicon-user"></span>
         </a>
+
     </div>
 </nav>
+
