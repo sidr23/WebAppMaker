@@ -159,6 +159,10 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.createWebsite = createWebsite;
+        vm.viewType = 'list';
+
+        vm.toggleView    = toggleView;
+
 
         function createWebsite (website) {
             if(!website)
@@ -175,6 +179,25 @@
                         vm.error = err;
                     }
                 )
+        }
+
+
+        function init () {
+            WebsiteService
+                .findWebsitesForDeveloperId ($routeParams.developerId)
+                .then (
+                    function (response) {
+                        vm.websites = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                )
+        }
+        init ();
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
     }
 })();

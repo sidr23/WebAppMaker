@@ -232,3 +232,30 @@ th {
     padding-right: 10px;
     padding-left: 10px
 }
+
+
+/*Added by @manasa-konidena*/
+
+.landscape-right{
+    width: 65.66%;
+    float: right;
+}
+
+.landscape-right-offset{
+    width: 69.66%;
+    float: right;
+}
+
+.padding{
+    padding-top: 15px;
+}
+
+.vr {
+    width:1px;
+    background-color: darkgray;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:35.33%;
+    right:64.66%;
+}
