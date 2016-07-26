@@ -194,6 +194,7 @@
         vm.widgetId      = $routeParams.widgetId;
 
         // event handlers
+        vm.saveScriptAndExecStatement = saveScriptAndExecStatement;
         vm.saveScript      = saveScript;
         function init() {
             ScriptService
@@ -241,6 +242,84 @@
                         vm.error = err;
                     }
                 );
+        }
+
+        function newSaveScript(script) {
+            vm.script.name = 'UntitledScript';
+            ScriptService
+                .saveScript(vm, script)
+                .then(
+                    function(script){
+                        ScriptService
+                            .findScript(vm)
+                            .then(
+                                function(response) {
+                                    vm.script = response.data;
+                                    if(!vm.script || vm.script == 'null') {
+                                        vm.script = {};
+                                    }
+                                    //AW: If script is present below action is executed
+                                    else {
+                                        vm.scriptId = vm.script._id;
+                                    }
+                                    var url  = "/developer/" + vm.developerId;
+                                    url += "/website/" + vm.websiteId;
+                                    url += "/page/" + vm.pageId;
+                                    url += "/widget/" + vm.widgetId;
+                                    url += "/script/" + vm.script._id;
+                                    url += "/statement/new";
+                                    $location.url(url);
+                                },
+                                function(err) {
+                                    vm.error = err;
+                                }
+                            );
+                    },
+                    function(err){
+                        vm.error = err;
+                    }
+                );
+        }
+
+        function saveScriptAndExecStatement(script) {
+            if(script._id === undefined){
+                newSaveScript(script);
+            }else{
+                ScriptService
+                    .findScript(vm)
+                    .then(
+                        function(response) {
+                            vm.script = response.data;
+                            if(!vm.script || vm.script == 'null') {
+                                vm.script = {};
+                            }
+                            //AW: If script is present below action is executed
+                            else {
+                                vm.scriptId = vm.script._id;
+                                StatementService
+                                    .findAllStatements(vm)
+                                    .then(
+                                        function (response) {
+                                            vm.statements = response.data;
+                                        },
+                                        function (err) {
+                                            vm.error = err;
+                                        }
+                                    );
+                            }
+                            var url  = "/developer/" + vm.developerId;
+                            url += "/website/" + vm.websiteId;
+                            url += "/page/" + vm.pageId;
+                            url += "/widget/" + vm.widgetId;
+                            url += "/script/" + vm.script._id;
+                            url += "/statement/new";
+                            $location.url(url);
+                        },
+                        function(err) {
+                            vm.error = err;
+                        }
+                    );
+            }
         }
     }
 
