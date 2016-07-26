@@ -83,6 +83,13 @@
         vm.websiteId = $routeParams.websiteId;
         vm.removeWebsite = removeWebsite;
         vm.updateWebsite = updateWebsite;
+        vm.viewType = 'list';
+
+        vm.toggleView    = toggleView;
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
 
         function init () {
             WebsiteService
@@ -94,7 +101,20 @@
                     function(err) {
                         vm.error = err;
                     }
+                );
+
+            //    To populate the list in landscape mode
+            WebsiteService
+                .findWebsitesForDeveloperId ($routeParams.developerId)
+                .then (
+                    function (response) {
+                        vm.websites = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
                 )
+
         }
         init ();
 
