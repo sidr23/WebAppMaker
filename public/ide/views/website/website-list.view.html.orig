@@ -1,0 +1,194 @@
+<<<<<<< HEAD
+<nav class="navbar navbar-default navbar-fixed-top jga">
+    <div class="navbar-header">
+
+        <a class="navbar-brand">Websites</a>
+
+        <a href="#/developer/{{model.developerId}}/website/new"
+                class="btn btn-default btn-transparent pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+
+    </div>
+</nav>
+
+<div ng-if="model.error"
+     class="alert alert-danger"
+     role="alert">
+    {{model.error}}
+</div>
+
+<div>
+    <div ng-repeat="website in model.websites | orderBy : model.sortBy : model.reverse" ng-show="model.viewType == 'list'"
+         class="row jga-bg-highlight-on-hover" style="padding: 8px">
+        <div class="col-xs-10">
+            <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page">
+                {{website.name}}
+            </a>
+            </div>
+            <!--<a href="#/developer/{{model.developerId}}/website/{{website._id}}/page/{{website.pages[0]._id}}/run"-->
+               <!--class="pull-right">-->
+                <!--<span class="glyphicon glyphicon-play"></span>-->
+            <!--</a>-->
+        <div class="customPadding col-xs-1">
+            <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+               class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+        </div>
+    </div>
+
+    <div ng-show="model.viewType == 'grid'">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites | orderBy : model.sortBy : model.reverse">
+                <div class="thumbnail">
+                    <img src="" alt="...">
+                    <div class="caption">
+                        <p>
+                            <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
+                                {{website.name}}
+                            </a>
+
+                            <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+                               class="pull-right">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom jga">
+    <div class="navbar-header">
+        <a ng-click="model.toggleView()"
+           class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-th" ng-show="model.viewType == 'list'"></span>
+            <span class="glyphicon glyphicon-th-list" ng-show="model.viewType == 'grid'"></span>
+        </a>
+
+        <a href="#/developer/{{currentUser.username}}/edit"
+           class="navbar-toggle collapsed">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+		
+		<span class="dropup" id="sort-options">
+			<button class="btn btn-default dropdown-toggle" id="sort-button" type="button" data-toggle="dropdown">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+				<div id="sort-button-text">AZ</div>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</button>
+		<!--<ul class="dropdown-menu">
+			  <li><a ng-click="model.sortList('name', '')">Last Modified</a></li>
+			  <li><a ng-click="model.sortList('name', '')">Name</a></li>
+			  <li><div class="checkbox" ng-click="model.sortList('', 'asc')"><label><input type="checkbox">Ascending</label></div></li>
+			  <li><a ng-click="model.sortList('', 'desc')"><input type="checkbox">&nbsp;&nbsp;&nbsp;Descending</a></li>
+			</ul>-->
+			<ul class="dropdown-menu">
+				<li>
+					<span id="list-label" ng-click="$event.stopPropagation()" id="list-option-text">Last Modified</span>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes-alt" ng-click="model.sortList('dateModified', true)"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-attributes" ng-click="model.sortList('dateModified', false)"/>
+				</li>
+				<li>
+					<span id="list-label" ng-click="$event.stopPropagation()">Name</span>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet-alt" ng-click="model.sortList('name', true)"/>
+					<span id="list-icon" class="glyphicon glyphicon-sort-by-alphabet" ng-click="model.sortList('name', false)"/>
+				</li>
+			</ul>
+		</span>
+    </div>
+</nav>
+=======
+<nav class="navbar navbar-default navbar-fixed-top jga">
+    <div class="navbar-header">
+
+        <a href="#/developer"
+           class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+
+        <a class="navbar-brand">Websites</a>
+
+        <a href="#/developer/{{model.developerId}}/website/new"
+                class="btn btn-default btn-transparent pull-right">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+
+    </div>
+</nav>
+
+<!--check error-->
+
+<div ng-if="model.error"
+     class="alert alert-danger"
+     role="alert">
+    {{model.error}}
+</div>
+
+<div>
+    <div ng-repeat="website in model.websites" ng-show="model.viewType == 'list'"
+         class="row jga-bg-highlight-on-hover" style="padding: 8px">
+        <div class="col-xs-10">
+            <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page">
+                {{website.name}}
+            </a>
+            </div>
+            <!--<a href="#/developer/{{model.developerId}}/website/{{website._id}}/page/{{website.pages[0]._id}}/run"-->
+               <!--class="pull-right">-->
+                <!--<span class="glyphicon glyphicon-play"></span>-->
+            <!--</a>-->
+        <div class="customPadding col-xs-1">
+            <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+               class="pull-right">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+        </div>
+    </div>
+
+    <div ng-show="model.viewType == 'grid'">
+        <div class="row">
+            <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites">
+                <div class="thumbnail">
+                    <img src="" alt="...">
+                    <div class="caption">
+                        <p>
+                            <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
+                                {{website.name}}
+                            </a>
+
+                            <a href="#/developer/{{model.developerId}}/website/{{website._id}}"
+                               class="pull-right">
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<nav class="navbar navbar-default navbar-fixed-bottom jga">
+    <div class="navbar-header">
+        <a ng-click="model.toggleView()"
+           class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-th" ng-show="model.viewType == 'list'"></span>
+            <span class="glyphicon glyphicon-th-list" ng-show="model.viewType == 'grid'"></span>
+        </a>
+
+        <a href="#/developer/{{currentUser.username}}/edit"
+           class="navbar-toggle collapsed">
+            <span class="glyphicon glyphicon-user"></span>
+        </a>
+    </div>
+</nav>
+>>>>>>> master
