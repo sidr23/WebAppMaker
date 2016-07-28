@@ -2,6 +2,7 @@ module.exports = function (app, model) {
 
     app.post   ("/api/website/:websiteId/page/:pageId/widget/:widgetId/script", saveScript);
     app.get    ("/api/website/:websiteId/page/:pageId/widget/:widgetId/script", findScript);
+    app.post   ("/api/script/:scriptId/run", runScript);
 
     app.post   ("/api/website/:websiteId/page/:pageId/widget/:widgetId/script/statement/:statementType", addStatement);
     app.get    ("/api/website/:websiteId/page/:pageId/widget/:widgetId/script/statement/:statementId", findStatement);
@@ -97,5 +98,33 @@ module.exports = function (app, model) {
                     res.statusCode(400).send(err);
                 }
             );
+    }
+
+
+
+    function runScript(req, res){
+        var scriptId = req.params.scriptId;
+        var scriptObj = req.body;
+
+        //var scriptObj = {"+":[1,2], "-":[4,3]};
+        var resultObj = {};
+
+        Object.keys(scriptObj).forEach(function(key) {
+            resultObj[key] = getResult(key,scriptObj[key][0],scriptObj[key][1])
+        });
+        return res.json(resultObj);
+
+    }
+
+    function getResult(operation,a,b){
+       if (operation == "+"){
+           return a + b;
+       }
+       else if(operation == "-"){
+           return a - b;
+       }
+       else
+           return a * b;
+
     }
 }

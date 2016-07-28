@@ -248,7 +248,7 @@
         }
     }
 
-    function editPageController ($routeParams, PageService, $location) {
+    function editPageController ($routeParams, WebsiteService, PageService, $location) {
 
         var vm = this;
         vm.username      = $routeParams.username;
@@ -258,6 +258,27 @@
 
         vm.removePage    = removePage;
         vm.updatePage    = updatePage;
+
+        vm.viewType = 'list';
+
+        vm.sortPage      = sortPage;
+        vm.toggleView    = toggleView;
+
+        function sortPage(start, end) {
+            PageService
+                .sortPage(vm.websiteId, start, end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
+        }
 
         function init() {
             PageService
@@ -269,7 +290,28 @@
                     function (err) {
                         vm.error = err;
                     }
+                );
+
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(
+                    function(response){
+                        vm.website = response.data;
+                        return PageService
+                            .findPagesForWebsite(vm.websiteId);
+                    },
+                    function(error){
+                        vm.error = error;
+                    }
                 )
+                .then(
+                    function (response) {
+                        vm.pages = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
         }
         init();
 
@@ -351,12 +393,41 @@
         }
     }
 
-    function newPageController($routeParams, PageService, $location) {
+    function newPageController($routeParams, WebsiteService, PageService, $location) {
 
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.websiteId = $routeParams.websiteId;
         vm.createPage = createPage;
+
+        vm.viewType = 'list';
+
+        vm.sortPage      = sortPage;
+        vm.toggleView    = toggleView;
+
+        function init() {
+            WebsiteService
+                .findWebsiteById(vm.websiteId)
+                .then(
+                    function(response){
+                        vm.website = response.data;
+                        return PageService
+                            .findPagesForWebsite(vm.websiteId);
+                    },
+                    function(error){
+                        vm.error = error;
+                    }
+                )
+                .then(
+                    function (response) {
+                        vm.pages = response.data;
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+        init();
 
         function createPage(page) {
             PageService
@@ -367,6 +438,22 @@
                         $location.url("/developer/"+vm.developerId+"/website/"+vm.websiteId+"/page");
                     }
                 )
+        }
+
+        function sortPage(start, end) {
+            PageService
+                .sortPage(vm.websiteId, start, end)
+                .then(
+                    function (response) {
+                    },
+                    function (err) {
+                        vm.error = err;
+                    }
+                );
+        }
+
+        function toggleView() {
+            vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
     }
 
