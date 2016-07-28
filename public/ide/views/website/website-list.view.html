@@ -1,6 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top jga">
     <div class="navbar-header">
 
+        <a href="#/developer"
+           class="btn btn-default btn-transparent pull-left">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+
         <a class="navbar-brand">Websites</a>
 
         <a href="#/developer/{{model.developerId}}/website/new"
@@ -10,6 +15,8 @@
 
     </div>
 </nav>
+
+<!--check error-->
 
 <div ng-if="model.error"
      class="alert alert-danger"
@@ -82,12 +89,6 @@
 				<div id="sort-button-text">AZ</div>
 				<span class="glyphicon glyphicon-chevron-down"></span>
 			</button>
-		<!--<ul class="dropdown-menu">
-			  <li><a ng-click="model.sortList('name', '')">Last Modified</a></li>
-			  <li><a ng-click="model.sortList('name', '')">Name</a></li>
-			  <li><div class="checkbox" ng-click="model.sortList('', 'asc')"><label><input type="checkbox">Ascending</label></div></li>
-			  <li><a ng-click="model.sortList('', 'desc')"><input type="checkbox">&nbsp;&nbsp;&nbsp;Descending</a></li>
-			</ul>-->
 			<ul class="dropdown-menu">
 				<li>
 					<span id="list-label" ng-click="$event.stopPropagation()" id="list-option-text">Last Modified</span>
