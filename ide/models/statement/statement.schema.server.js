@@ -14,7 +14,8 @@ module.exports = function() {
         dateStatement   : require("./date-statement.schema.server")(),
         stringStatement   : require("./string-statement.schema.server")(),
         ifStatement: require("./if-statement.schema.server")(),
-        booleanStatement: require("./boolean-statement.schema.server")()
+        booleanStatement: require("./boolean-statement.schema.server")(),
+        arrayStatement: require("./array-statement.schema.server")()
     }, {collection: 'statement'});
 
     return StatementSchema;

@@ -3,7 +3,8 @@ module.exports = function() {
         'NUMBER': require('../statement/number-statement.impl.server')(),
         'STRING': require('../statement/string-statement.impl.server')(),
         'CONSOLE': require('../statement/console-statement.impl.server')(),
-        'FLOW': require('../statement/flow-statement.impl.server')()
+        'FLOW': require('../statement/flow-statement.impl.server')(),
+        'ARRAY': require('../statement/array-statement.impl.server')()
     };
 
     var api = {
