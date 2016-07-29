@@ -10,7 +10,20 @@ var statements = [
             {variable: 'B'}],
         output:'C'
     },
-    {   
+    { // Displays concatenation of A and B which is C
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'C'}]
+    },
+    {
+        type: 'ARRAY',
+        operation: 'EVERY',
+        input:[
+            {variable:'A'}
+        ],
+        output: 'C'
+    },
+    {   // Displays true or false based on the function in every
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'C'}]

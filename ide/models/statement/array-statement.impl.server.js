@@ -24,6 +24,11 @@ module.exports = function () {
             case 'CONCAT' :
                 model[statement.output] = array1.concat(array2);
                 break;
+            case 'EVERY' :
+                model[statement.output] = array1.every(function (element) {
+                    return element >= 90;
+                });
+                break;
         }
         return null;
     }
