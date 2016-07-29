@@ -1,7 +1,7 @@
 //var number = require('../statement/number-statement.impl.server');
 
 var statements = [
-    {
+    {   // C = A + 23;
         label:'start',
         type:'NUMBER',
         operation:'ADDITION',
@@ -10,27 +10,27 @@ var statements = [
             {literal: 23}],
         output:'C'
     },
-    {
+    {   // console.log('A =')
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'A ='}]
     },
-    {
+    {   // console.log(A) --> 2
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'A'}]
     },
-    {
+    {   // console.log('A plus 23 =')
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'A plus 23 ='}]
     },
-    {
+    {   // console.log(C) --> 25
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'C'}]
     },
-    {
+    {   // result = tobe + ' Or Not To Be';
         type: 'STRING',
         operation: 'CONCATENATE',
         input: [
@@ -39,24 +39,24 @@ var statements = [
         ],
         output: 'result'
     },
-    {
+    {   // console.log(result); --> 'To Be Or Not To Be'
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'result'}]
     },
-    {
+    {   // age = 23
         type: 'NUMBER',
         operation: 'VARIABLE',
         input:[{literal: 23}],
         output:'age'
     },
-    {
+    {   // adult = age > 21 --> true
         type: 'NUMBER',
         operation: 'GREATER_THAN',
         input:[{variable: 'age'}, {literal: 21}],
         output: 'adult'
     },
-    {
+    {   // if(adult) goto candring else goto cantdrink
         type: 'FLOW',
         operation: 'IF',
         input:[
@@ -88,13 +88,13 @@ var statements = [
             {literal: 'Count to 10'}
         ]
     },
-    {
+    {   // i = 0;
         type: 'NUMBER',
         operation: 'VARIABLE',
         input:[{literal: 0}],
         output:'i'
     },
-    {
+    {   // i++
         label:'addone',
         type:'NUMBER',
         operation:'ADDITION',
@@ -103,20 +103,20 @@ var statements = [
             {literal: 1}],
         output:'i'
     },
-    {
+    {   // console.log(i)
         type: 'CONSOLE',
         operation: 'LOG',
         input:[
             {variable: 'i'}
         ]
     },
-    {
+    {   // done = i > 10
         type: 'NUMBER',
         operation: 'GREATER_THAN',
         input:[{variable: 'i'}, {literal: 10}],
         output: 'done'
     },
-    {
+    {   // if(done) goto stop else goto addone
         type: 'FLOW',
         operation: 'IF',
         input:[
@@ -125,7 +125,7 @@ var statements = [
             {literal: 'addone'}
         ]
     },
-    {
+    {   // console.log('done')
         label: 'stop',
         type: 'CONSOLE',
         operation: 'LOG',
@@ -142,7 +142,8 @@ var script = {
 var model = {
     A: 2,
     B: 4,
-    tobe: 'To Be'
+    tobe: 'To Be',
+    grades: [90,98,100]
 };
 
 var runner = require('../script/script.runner.server')();
