@@ -3,8 +3,7 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var ArrayStatementSchema = mongoose.Schema({
-        operationType : {type : String, enum : ["CONCAT", "PUSH", "POP","MAP","REVERSE",
-            "FOREACH"]},
+        operationType : {type : String, enum : ["CONCAT", "EVERY"]},
         input1        : [
             {
                 element: String
