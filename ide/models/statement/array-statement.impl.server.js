@@ -75,6 +75,46 @@ module.exports = function () {
             case 'POP' :
                 model[statement.output] = arg1.pop();
                 break;
+            case 'PUSH' :
+                model[statement.output] = arg1.push(arg2);
+                break;
+            case 'REDUCE' :
+                model[statement.output] = arg1.reduce(function (ele, total) {
+                    return ele + total ;
+                });
+                break;
+            case 'REDUCERIGHT' :
+                model[statement.output] = arg1.reduceRight(function (ele, total) {
+                    return ele + total ;
+                });
+                break;
+            case 'SHIFT' :
+                model[statement.output] = arg1.shift();
+                break;
+            case 'SLICE' :
+                model[statement.output] = arg1.slice(0,2);
+                break;
+            case 'SOME' :
+                model[statement.output] = arg1.some(function (element) {
+                    return element <= arg2;
+                });
+                break;
+            case 'SORT' :
+                model[statement.output] = arg1.sort();
+                break;
+            case 'SPLICE':
+                arg1.splice(2, 0, "script", "runner");
+                break;
+            case 'TOSTRING' :
+                model[statement.output] = arg1.toString();
+                break;
+            case 'UNSHIFT' :
+                model[statement.output] = arg1.unshift(arg2);
+                break;
+            case 'VALUEOF' :
+                model[statement.output] = arg1.valueOf();
+                break;
+
         }
         return null;
     }
