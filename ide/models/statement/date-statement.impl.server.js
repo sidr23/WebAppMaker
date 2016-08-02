@@ -160,6 +160,82 @@ module.exports = function () {
 
                 model[statement.output] = data;
                 break;
+
+            case 'Subtract':
+                var operand;
+                if (statement.input[0]) {
+                    operand = model[statement.input[0].variable];
+                    if (typeof operand === 'undefined') {
+                        operand = statement.input[0].literal;
+                    }
+                }
+                var data = new Date(Date.parse(operand));
+
+                if (statement.value === 'Years') {
+                    var years;
+                    if (statement.input[1]) {
+                        years = model[statement.input[1].variable];
+                        if (typeof years === 'undefined') {
+                            years = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setFullYear(data.getFullYear() - years);
+                } else if (statement.value === 'Months') {
+                    var months;
+                    if (statement.input[1]) {
+                        months = model[statement.input[1].variable];
+                        if (typeof months === 'undefined') {
+                            months = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setMonth(data.getMonth() - months);
+                } else if (statement.value === 'Days') {
+                    var days;
+                    if (statement.input[1]) {
+                        days = model[statement.input[1].variable];
+                        if (typeof days === 'undefined') {
+                            days = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setHours(data.getHours() - (days * 24));
+
+                } else if (statement.value === 'Hours') {
+                    var hours;
+                    if (statement.input[1]) {
+                        hours = model[statement.input[1].variable];
+                        if (typeof hours === 'undefined') {
+                            hours = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setHours(data.getHours() - hours);
+                } else if (statement.value === 'Minutes') {
+                    var minutes;
+                    if (statement.input[1]) {
+                        minutes = model[statement.input[1].variable];
+                        if (typeof minutes === 'undefined') {
+                            minutes = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setMinutes(data.getMinutes() - minutes);
+                } else if (statement.value === 'Seconds') {
+                    var seconds;
+                    if (statement.input[1]) {
+                        seconds = model[statement.input[1].variable];
+                        if (typeof seconds === 'undefined') {
+                            seconds = statement.input[1].literal;
+                        }
+                    }
+
+                    data.setSeconds(data.getSeconds() - seconds);
+                }
+
+                model[statement.output] = data;
+                break;
         }
         return null;
     }
