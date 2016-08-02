@@ -291,3 +291,28 @@ th {
     left:35.33%;
     right:64.66%;
 }
+
+.wam-widget-vr {
+    width: 1px;
+    background-color: darkgray;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 68.4%;
+    right: 31.6%;
+}
+
+@media (max-width: 600px) and  (orientation: portrait){
+    .wam-navbar-brand {
+        text-overflow : ellipsis;
+        white-space   : nowrap;
+        width         : 180px;
+        overflow      : hidden;
+    }
+}
+
+@media (max-width: 990px){
+    .wam-widget-tool-name {
+        font-size: 10px;
+    }
+}
