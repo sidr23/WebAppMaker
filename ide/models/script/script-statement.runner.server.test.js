@@ -12,12 +12,12 @@ var statements = [
             {variable: 'tobe'},
             {literal: ' Or Not To Be'}
         ],
-        output: 'result'
+        output: 'concat_result'
     },
     {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{variable: 'result'}]
+        input:[{variable: 'concat_result'}]
     },
     {
         type: 'STRING',
@@ -219,8 +219,7 @@ var statements = [
         operation: 'REPLACE',
         input: [
             {variable: 'tobe'},
-            {literal:'To'},
-            {literal:'Not To'}
+            {literal:'Not To Be'}
         ],
         output: 'replace_result'
     },
@@ -294,7 +293,75 @@ var statements = [
         operation: 'LOG',
         input:[{variable: 'trim_result'}]
     },
-
+    {
+        type: 'STRING',
+        operation: 'STARTSWITH',
+        input: [
+            {variable: 'tobe'},
+            {literal: 'To'}
+        ],
+        output: 'startsWith_result'
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'startsWith_result'}]
+    },
+    {
+        type: 'STRING',
+        operation: 'STARTSWITH',
+        input: [
+            {variable: 'tobe'},
+            {literal: 'Be'}
+        ],
+        output: 'startsWith_neg_result'
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'startsWith_neg_result'}]
+    },
+    {
+        type: 'STRING',
+        operation: 'ENDSWITH',
+        input: [
+            {variable: 'tobe'},
+            {literal: 'Be'}
+        ],
+        output: 'endsWith_result'
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'endsWith_result'}]
+    },
+    {
+        type: 'STRING',
+        operation: 'ENDSWITH',
+        input: [
+            {variable: 'tobe'},
+            {literal: 'To'}
+        ],
+        output: 'endsWith_neg_result'
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'endsWith_neg_result'}]
+    },
+    {
+        type: 'STRING',
+        operation: 'VALUEOF',
+        input: [
+            {variable: 'tobe'}
+        ],
+        output: 'valueOf_result'
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'valueOf_result'}]
+    },
 ];
 
 var script = {
