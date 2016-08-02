@@ -10,10 +10,13 @@ module.exports = function () {
 
     function execute(statement, model) {
         switch (statement.operation) {
+
+            // creates a new date
             case 'New Date':
                 model[statement.output] = new Date().toString();
                 break;
 
+            // creates a new date based on the provided string
             case 'Date From String':
                 var str;
                 if (statement.input[0]) {
@@ -27,6 +30,7 @@ module.exports = function () {
                 model[statement.output] = new Date(ms);
                 break;
 
+            // creates a new date from the provided milliseconds
             case 'Date From Milliseconds':
                 var operand;
                 if (statement.input[0]) {
@@ -38,6 +42,8 @@ module.exports = function () {
                 model[statement.output] = new Date(operand);
                 break;
 
+            // creates a new date based on the provided date parameters
+            // year, month, day, hours, minutes, seconds, milliseconds
             case 'Date From Parameters':
                 var year, month, day, hours, minutes, seconds, milliseconds;
                 if (statement.input[0]) {
@@ -85,6 +91,8 @@ module.exports = function () {
                 model[statement.output] = new Date(year, month, day, hours, minutes, seconds, milliseconds);
                 break;
 
+            // adds the specified value to the provided parameter
+            // eg. add 6 hours to provided date; add 10 years to provided date
             case 'Add':
                 var operand;
                 if (statement.input[0]) {
@@ -94,7 +102,7 @@ module.exports = function () {
                     }
                 }
                 var data = new Date(Date.parse(operand));
-                
+
                 if (statement.value === 'Years') {
                     var years;
                     if (statement.input[1]) {
@@ -125,7 +133,7 @@ module.exports = function () {
                     }
 
                     data.setHours(data.getHours() + (days * 24));
-                    
+
                 } else if (statement.value === 'Hours') {
                     var hours;
                     if (statement.input[1]) {
@@ -161,6 +169,8 @@ module.exports = function () {
                 model[statement.output] = data;
                 break;
 
+            // subtracts the specified value from the provided parameter
+            // eg. subtract 4 days from the provided date; subtract 900 minutes from the provided date
             case 'Subtract':
                 var operand;
                 if (statement.input[0]) {
@@ -235,6 +245,34 @@ module.exports = function () {
                 }
 
                 model[statement.output] = data;
+                break;
+
+            // converts the date into the GMT/UTC (Coordinated Universal Time) date time format
+            case 'To UTC Format':
+                var str;
+                if (statement.input[0]) {
+                    str = model[statement.input[0].variable];
+                    if (typeof str === 'undefined') {
+                        str = statement.input[0].literal;
+                    }
+                }
+                var ms = Date.parse(str);
+
+                model[statement.output] = new Date(ms).toUTCString();
+                break;
+
+            // converts the date into the local date time format
+            case 'To Local Format':
+                var str;
+                if (statement.input[0]) {
+                    str = model[statement.input[0].variable];
+                    if (typeof str === 'undefined') {
+                        str = statement.input[0].literal;
+                    }
+                }
+                var ms = Date.parse(str);
+
+                model[statement.output] = new Date(ms);
                 break;
         }
         return null;

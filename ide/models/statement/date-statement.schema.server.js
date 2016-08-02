@@ -12,7 +12,9 @@ module.exports = function() {
                     "Date From Milliseconds",
                     "Date From Parameters",
                     "Add",
-                    "Subtract"
+                    "Subtract",
+                    "To UTC Format",
+                    "To Local Format"
                 ]
             }
         },
