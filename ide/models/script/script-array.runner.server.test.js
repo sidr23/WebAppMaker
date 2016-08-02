@@ -430,26 +430,26 @@ var statements = [
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'C'}]
+    },
+    {
+        type: 'ARRAY',
+        operation: 'FILL',
+        input:[
+            {variable:'D'},
+            {literal: 'fill in'}
+        ],
+        output: 'C'
+    },
+    { // The array A with all elements replaced by "fill in"
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{literal: 'The array A with all elements replaced by "fill in"'}]
+    },
+    {   // Displays the array with the same element. After the fill function
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'C'}]
     }
-    // {
-    //     type: 'ARRAY',
-    //     operation: 'FILL',
-    //     input:[
-    //         {variable:'A'},
-    //         {literal: 'fill in'}
-    //     ],
-    //     output: 'C'
-    // },
-    // { // The array A with all elements replaced by "fill in"
-    //     type: 'CONSOLE',
-    //     operation: 'LOG',
-    //     input:[{literal: 'The array A with all elements replaced by "fill in"'}]
-    // },
-    // {   // Displays the array with the same element. After the fill function
-    //     type: 'CONSOLE',
-    //     operation: 'LOG',
-    //     input:[{variable: 'C'}]
-    // }
 ];
 
 var script = {
@@ -458,7 +458,8 @@ var script = {
 
 var model = {
     A: [103, 56, 67, 90, 92, 89],
-    B: ["remove", "web", "development", "ftw"]
+    B: ["remove", "web", "development", "ftw"],
+    D: [1, 2, 3, 4, 5]
 
 };
 
