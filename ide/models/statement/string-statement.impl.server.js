@@ -66,8 +66,10 @@ module.exports = function () {
                 break;
             case 'STARTSWITH':
                 model[statement.output] = operand1.startsWith(operand2);
+                break;
             case 'ENDSWITH':
                 model[statement.output] = operand1.endsWith(operand2);
+                break;
             case 'VALUEOF':
                 model[statement.output] = operand1.valueOf();
                 break;
