@@ -132,6 +132,14 @@ var statements = [
         input:[
             {literal: 'done'}
         ]
+    },
+
+    {
+        type: 'DATABASE',
+        operation: 'Insert',
+        input: [
+            {variable:{"collection":"Student","id":123,"name":"Joey","grade":"10"}}
+        ]
     }
 ];
 
@@ -142,8 +150,8 @@ var script = {
 var model = {
     A: 2,
     B: 4,
-    tobe: 'To Be',
-    grades: [90,98,100]
+    tobe: 'To Be'
+    //grades: [90,98,100]
 };
 
 var runner = require('../script/script.runner.server')();

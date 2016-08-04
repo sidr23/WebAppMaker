@@ -7,7 +7,8 @@ module.exports = function() {
         databaseOperation : {
             label: {type: String, enum: ["Select", "Insert", "Update", "Delete"]}
         },
-        collectionName    : String
+        collectionName    : String,
+        output: String
     });
 
     return DatabaseStatementSchema;

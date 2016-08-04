@@ -38,4 +38,4 @@ module.exports = function() {
     model.mongo          = mongo;
 
     return model;
-}
+};
