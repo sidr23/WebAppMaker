@@ -10,7 +10,7 @@ var statements = [
             {variable: 'B'}],
         output:'C'
     },
-    { // Displays concatenation of A and B is
+    { // Display concatenation of A and B
         type: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'Concatenation of array A and array B'}]
