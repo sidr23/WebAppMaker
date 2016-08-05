@@ -1,4 +1,4 @@
-//var number = require('../statement/number-statement.impl.server');
+
 
 var statements = [
     {   
