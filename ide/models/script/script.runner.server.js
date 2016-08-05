@@ -4,7 +4,8 @@ module.exports = function() {
         'STRING': require('../statement/string-statement.impl.server')(),
         'CONSOLE': require('../statement/console-statement.impl.server')(),
         'FLOW': require('../statement/flow-statement.impl.server')(),
-        'DATE': require('../statement/date-statement.impl.server')()
+        'DATE': require('../statement/date-statement.impl.server')(),
+        'ARRAY': require('../statement/array-statement.impl.server')()
     };
 
     var api = {
