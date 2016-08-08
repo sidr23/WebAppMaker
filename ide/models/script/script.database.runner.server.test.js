@@ -5,7 +5,8 @@ var statements = [
         input: [
             {literal:"Student"},
             {literal:{"id":123,"name":"Joey","grade":"10"}}
-        ]
+        ],
+        output:'insert_student_result'
     },
     {
         type: 'DATABASE',
@@ -13,7 +14,8 @@ var statements = [
         input: [
             {variable:"collectionName1"},
             {literal:{"employee_id":"F.R.I.E.N.D.S05","employee_name":"Joey","department":"Stupidity","location":"Central Perk"}}
-        ]
+        ],
+        output:'insert_employee_result'
     },
     {
         type: 'DATABASE',
@@ -21,7 +23,43 @@ var statements = [
         input: [
             {variable:'collectionName2'},
             {literal:{"id":"123"}}
-        ]
+        ],
+        output:'select_student_result'
+    },
+    {
+        type: 'DATABASE',
+        operation: 'Select',
+        input: [
+            {variable:'collectionName2'},
+            {literal:{"id":"123"}}
+        ],
+        output:'select_student_result'
+    },{
+        type: 'DATABASE',
+        operation: 'Select',
+        input: [
+            {variable:'collectionName2'},
+            {literal:{"id":"123"}}
+        ],
+        output:'select_student_result'
+    },{
+        type: 'DATABASE',
+        operation: 'Update',
+        input: [
+            {variable:'collectionName2'},
+            {literal:{"id":123}},
+            {literal:{"name":"Ross"}}
+        ],
+        output:'update_student_result'
+    },
+    {
+        type: 'DATABASE',
+        operation: 'Delete',
+        input: [
+            {variable:'collectionName2'},
+            {literal:{"id":123}}
+        ],
+        output:'delete_student_result'
     }
 
 
@@ -43,5 +81,5 @@ var model = {
 
 var runner = require('../script/script.runner.server')();
 runner.run(script, model);
-console.log("model")
+console.log("model");
 console.log(model);

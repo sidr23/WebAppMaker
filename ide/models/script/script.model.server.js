@@ -16,7 +16,7 @@ module.exports = function(websiteModel) {
         findStatement: findStatement,
         deleteStatement: deleteStatement,
         updateStatement: updateStatement,
-        findStatementById: findStatementById,
+        findStatementById: findStatementById
     };
     return api;
 

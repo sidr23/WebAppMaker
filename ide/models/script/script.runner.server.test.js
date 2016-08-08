@@ -132,14 +132,6 @@ var statements = [
         input:[
             {literal: 'done'}
         ]
-    },
-
-    {
-        type: 'DATABASE',
-        operation: 'Insert',
-        input: [
-            {variable:{"collection":"Student","id":123,"name":"Joey","grade":"10"}}
-        ]
     }
 ];
 

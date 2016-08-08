@@ -8,7 +8,8 @@ module.exports = function() {
             label: {type: String, enum: ["Select", "Insert", "Update", "Delete"]}
         },
         collectionName    : String,
-        output: String
+        filter : String,
+        resultOperation: String
     });
 
     return DatabaseStatementSchema;

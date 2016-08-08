@@ -1,29 +1,14 @@
+var q = require("q");
 
-module.exports = function () {
-
-    var mongojs  = require('mongojs');
-
-    var connectionString = 'mongodb://127.0.0.1:27017/wam';
-    var dbName = process.env.OPENSHIFT_APP_NAME || 'wam';
-
-    if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-        connectionString = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-            process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-            process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-            process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-            process.env.OPENSHIFT_APP_NAME;
-    }
-
-
-    var db = mongojs(connectionString);
-
+module.exports = function (db) {
+    var dbStmtModel = require("./database-statement.model.server")(db);
     var api = {
         execute: execute
     };
     return api;
-
+    var result ="";
     function execute(statement, model){
-        var  operand1, operand2;
+        var  operand1, operand2, operand3;
         if(statement.input[0]) {
             operand1 = model[statement.input[0].variable];
             if(typeof operand1 === 'undefined') {
@@ -36,36 +21,58 @@ module.exports = function () {
                 operand2 = statement.input[1].literal;
             }
         }
+        if(statement.input[2]) {
+            operand3 = model[statement.input[2].variable];
+            if(typeof operand3 === 'undefined') {
+                operand3 = statement.input[2].literal;
+            }
+        }
 
 
-        console.log(operand1);
-        console.log(operand2);
         var collection =  db.collection(operand1);
 
 
         switch (statement.operation) {
             case 'Select' :
-                model[statement.operation] = "";
-                collection.find(operand2,
-                function(err,docs){
-                    model[statement.operation] = docs;
-                });
+                var temp ="";
+
+                    dbStmtModel.selectRecords(operand1, operand2).then(function (results) {
+                        result = results;
+                    }, function (err) {
+                        return err;
+                    });
+
+                model[statement.output] = result;
                 break;
             case 'Insert' :
-                collection.insert(operand2);
-                model[statement.operation] = "";
-                collection.find(operand2,
-                    function(err,docs){
-                        model[statement.operation]= docs;
-                    });
+                var temp ="";
+
+                     dbStmtModel.insertRecords(operand1, operand2).then(function (results) {
+                         console.log("results",results);
+                        result = results;
+                     }, function (err) {
+                         return err;
+                     });
+                model[statement.output] = result;
                 break;
-            //case 'Update' :
-            //    model[statement.output] = operand1 - operand2;
-            //    break;
-            //case 'Delete' :
-            //    model[statement.output] = operand1 * operand2;
-            //    break;
+            case 'Update' :
+                dbStmtModel.updateRecords(operand1, operand2,operand3).then(function (results) {
+                    console.log("results",results);
+                    result = results;
+                }, function (err) {
+                    return err;
+                });
+                break;
+            case 'Delete' :
+                dbStmtModel.deleteRecords(operand1, operand2).then(function (results) {
+                    console.log("results",results);
+                    result = results;
+                }, function (err) {
+                    return err;
+                });
+                break;
         }
+        return null;
 
     }
 
