@@ -27,20 +27,14 @@ module.exports = function () {
             case 'OR' :
                 model[statement.output] =  arg1 || arg2;
 				break;
-            case 'Equal to':
-                model[statement.output] =  arg1 == arg2;
-				break;
-            case 'Greater than' :
-                model[statement.output] =  arg1 > arg2;
-				break;
-            case 'Greater than or equal' :
-                model[statement.output] =  arg1 >= arg2;
-				break;
-            case 'Less than' :
-                model[statement.output] =  arg1 < arg2;
-				break;
-            case 'Less than or equal' :
-                model[statement.output] =  arg1 <= arg2;
+			case 'NOT':
+                model[statement.output] =  !arg1;
+				break;		
+			case 'XOR':
+                model[statement.output] =  arg1 ? !arg2 : arg2;
+				break;			
+			case 'Eval' :
+                model[statement.output] =  arg1;
 				break;
         }
         return null;
