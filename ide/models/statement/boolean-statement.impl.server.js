@@ -26,13 +26,19 @@ module.exports = function () {
 				break;
             case 'OR' :
                 model[statement.output] =  arg1 || arg2;
-				break;
-			case 'NOT':
-                model[statement.output] =  !arg1;
 				break;		
 			case 'XOR':
                 model[statement.output] =  arg1 ? !arg2 : arg2;
-				break;			
+				break;
+			case 'NOT':
+                model[statement.output] =  !arg1;
+				break;
+			case 'NAND':
+                model[statement.output] =  !(arg1 && arg2);
+				break;
+			case 'NOR':
+                model[statement.output] =  !(arg1 || arg2);
+				break;
 			case 'Eval' :
                 model[statement.output] =  arg1;
 				break;

@@ -13,7 +13,7 @@ var statements = [
     { // Display AND of A and B
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'AND operation of A and B'}]
+        input:[{literal: 'The result of A AND B'}]
     },
 	{
         type: 'CONSOLE',
@@ -40,41 +40,74 @@ var statements = [
     },
 	{
         type: 'BOOLEAN',
-        operation: 'Equal to',
+        operation: 'XOR',
         input:[
-            {variable:'D'},
-            {variable:'E'}
-        ],
-        output: 'C'
+            {variable:'C'},
+            {variable: 'B'}],
+        output: 'F'
+    },
+    { // Displays the above literal
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{literal: 'The result of C XOR B is '}]
     },
     {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The result of D == E is'}]
-    },
-    {
-        type: 'CONSOLE',
-        operation: 'LOG',
-        input:[{variable: 'C'}]
+        input:[{variable: 'F'}]
     },
 	{
         type: 'BOOLEAN',
-        operation: 'Not Equal to',
+        operation: 'NAND',
         input:[
-            {variable:'D'},
-            {variable:'E'}
-        ],
-        output: 'C'
+            {variable:'C'},
+            {variable: 'B'}],
+        output: 'F'
+    },
+    { // Displays the above literal
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{literal: 'The result of C NAND B is '}]
     },
     {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The result of D != E is'}]
+        input:[{variable: 'F'}]
+    },
+	{
+        type: 'BOOLEAN',
+        operation: 'NOR',
+        input:[
+            {variable:'C'},
+            {variable: 'B'}],
+        output: 'F'
+    },
+    { // Displays the above literal
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{literal: 'The result of C NOR B is '}]
     },
     {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{variable: 'C'}]
+        input:[{variable: 'F'}]
+    },
+	{
+        type: 'BOOLEAN',
+        operation: 'NOT',
+        input:[
+            {variable: 'B'}],
+        output: 'F'
+    },
+    { // Displays the above literal
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{literal: 'The result of NOT of B is '}]
+    },
+    {
+        type: 'CONSOLE',
+        operation: 'LOG',
+        input:[{variable: 'F'}]
     },
 	{
         type: 'BOOLEAN',
