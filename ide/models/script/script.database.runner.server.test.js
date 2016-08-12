@@ -6,7 +6,15 @@ var statements = [
             {literal:"Student"},
             {literal:{"id":123,"name":"Joey","grade":"10"}}
         ],
-        output:'insert_student_result'
+        output:'insert_student_result',
+
+        databaseStatement: {
+            operation: {
+                type: 'INSERT'
+            },
+            collectionName: {literalString: 'Student'},
+            record: {literalObject: {"id":123,"name":"Joey","grade":"10"}}
+        }
     },
     {
         type: 'DATABASE',
@@ -24,7 +32,15 @@ var statements = [
             {variable:'collectionName2'},
             {literal:{"id":"123"}}
         ],
-        output:'select_student_result'
+        output:'select_student_result',
+
+        databaseStatement: {
+            operation: {
+                type: 'INSERT'
+            },
+            collectionName: {variable: 'collectionName2'},
+            filter: {literalObject: {"id":123}}
+        }
     },
     {
         type: 'DATABASE',

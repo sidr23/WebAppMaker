@@ -38,11 +38,11 @@ module.exports = function (db) {
 
                     dbStmtModel.selectRecords(operand1, operand2).then(function (results) {
                         result = results;
+                        model[statement.output] = result;
                     }, function (err) {
                         return err;
                     });
 
-                model[statement.output] = result;
                 break;
             case 'Insert' :
                 var temp ="";
