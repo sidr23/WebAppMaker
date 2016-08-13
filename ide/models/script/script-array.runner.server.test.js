@@ -25,19 +25,15 @@ var statements = [
         operation: 'EVERY',
         input:[
             {variable:'A'},
-            {literal: 90}
+            {literal: 90},
+            {variable: 'E'}
         ],
         output: 'C'
     },
-    { // Displays the above literal
+    {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The number to be checked with is 90'}]
-    },
-    { // The result for if the above number is greater then all elements on A
-        type: 'CONSOLE',
-        operation: 'LOG',
-        input:[{literal: 'The result for if the above number is greater then all elements in A array'}]
+        input:[{literal: 'True if all the elements in the array are even numbers'}]
     },
     {   // Displays true or false based on the function in every
         type: 'CONSOLE',
@@ -49,14 +45,15 @@ var statements = [
         operation: 'FILTER',
         input:[
             {variable:'A'},
-            {literal: 90}
+            {literal: 90},
+            {variable: 'E'}
         ],
         output: 'C'
     },
-    { // The array A with all elements which pass are >= 90
+    { // The array A with all elements which are even
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The array A with all elements which pass are >= 80'}]
+        input:[{literal: 'The array A with all elements which are even'}]
     },
     {   // Displays the array with after filtering with the above condition
         type: 'CONSOLE',
@@ -68,7 +65,8 @@ var statements = [
         operation: 'FIND',
         input:[
             {variable:'B'},
-            {literal: "ftw"}
+            {literal: "ftw"},
+            {variable: 'F'}
         ],
         output: 'C'
     },
@@ -87,7 +85,7 @@ var statements = [
         operation: 'FINDINDEX',
         input:[
             {variable:'B'},
-            {literal: "ftw"}
+            {variable: 'F'}
         ],
         output: 'C'
     },
@@ -105,7 +103,9 @@ var statements = [
         type: 'ARRAY',
         operation: 'FOREACH',
         input:[
-            {variable:'A'}
+            {variable:'A'},
+            {literal: 4},
+            {variable: 'G'}
         ],
         output: 'C'
     },
@@ -114,24 +114,24 @@ var statements = [
         operation: 'LOG',
         input:[{literal: 'The array after adding 2 to each element'}]
     },
-    {   // Displays the array with after filtering with the above condition
+    {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{variable: 'C'}]
+        input:[{variable: 'A'}]
     },
     {
         type: 'ARRAY',
         operation: 'INDEXOF',
         input:[
             {variable:'A'},
-            {literal: 92}
+            {literal: 920}
         ],
         output: 'C'
     },
     { // The index of the element 92 in array A is
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The index of the element 92 in array A is'}]
+        input:[{literal: 'The index of the element 920 in array A is'}]
     },
     {   // Displays the index of 90
         type: 'CONSOLE',
@@ -198,7 +198,8 @@ var statements = [
         operation: 'MAP',
         input:[
             {variable:'B'},
-            {literal: "map"}
+            {literal: "map"},
+            {variable: 'H'}
         ],
         output: 'C'
     },
@@ -253,7 +254,8 @@ var statements = [
         type: 'ARRAY',
         operation: 'REDUCE',
         input:[
-            {variable:'B'}
+            {variable:'B'},
+            {variable: 'I'}
         ],
         output: 'C'
     },
@@ -271,7 +273,8 @@ var statements = [
         type: 'ARRAY',
         operation: 'REDUCERIGHT',
         input:[
-            {variable:'B'}
+            {variable:'B'},
+            {variable: 'I'}
         ],
         output: 'C'
     },
@@ -307,7 +310,9 @@ var statements = [
         type: 'ARRAY',
         operation: 'SLICE',
         input:[
-            {variable:'B'}
+            {variable:'B'},
+            {literal: 0},
+            {literal: 2}
         ],
         output: 'C'
     },
@@ -325,15 +330,16 @@ var statements = [
         type: 'ARRAY',
         operation: 'SOME',
         input:[
-            {variable:'B'},
-            {literal: 30}
+            {variable:'A'},
+            {literal: 30},
+            {variable: 'E'}
         ],
         output: 'C'
     },
-    { // True if any of the elementsin the array are less than 30
+    {
         type: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'True if any of the elementsin the array are less than 30'}]
+        input:[{literal: 'True if any of the elementsin the array is even'}]
     },
     {
         type: 'CONSOLE',
@@ -362,7 +368,11 @@ var statements = [
         type: 'ARRAY',
         operation: 'SPLICE',
         input:[
-            {variable:'B'}
+            {variable:'B'},
+            {literal: "script"},
+            {literal: "runner"},
+            {literal: 2},
+            {literal: 0}
         ],
         output: 'C'
     },
@@ -380,7 +390,8 @@ var statements = [
         type: 'ARRAY',
         operation: 'TOSTRING',
         input:[
-            {variable:'B'}
+            {variable:'B'},
+            {literal: "-"}
         ],
         output: 'C'
     },
@@ -456,10 +467,37 @@ var script = {
     statements: statements
 };
 
+var isEven = function (element) {
+    return (element % 2)==0;
+};
+
+
+var equalTo = function (element) {
+    return element === "ftw";
+};
+
+var addTwo = function (element, index, array) {
+    return array[index] = element * 10;
+};
+
+var concatMap = function (element) {
+    var temp = element + "map" + "";
+    return temp;
+};
+
+var reduction = function (ele, total) {
+    return ele + total ;
+};
+
 var model = {
-    A: [103, 56, 67, 90, 92, 89],
+    A: [103, 55, 67, 91, 92, 89],
     B: ["remove", "web", "development", "ftw"],
-    D: [1, 2, 3, 4, 5]
+    D: [1, 2, 3, 4, 5],
+    E: isEven,
+    F: equalTo,
+    G: addTwo,
+    H: concatMap,
+    I: reduction
 
 };
 
