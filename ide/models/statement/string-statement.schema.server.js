@@ -3,8 +3,8 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var StringStatementSchema = mongoose.Schema({
-        operationType : {type : String, enum : ["SUBSTRING", "CONCATENATE", "LENGTH","CHARAT","INDEXOF","LASTINDEXOF",
-            "SEARCH","REPEAT","REPLACE","SLICE","LOWERCASE","UPPERCASE","TRIM",
+        operationType : {type : String, enum : ["SUBSTRING", "SUBSTR", "CONCATENATE", "LENGTH","CHARAT","CHARCODEOF","INDEXOF","LASTINDEXOF",
+            "SEARCH","REPEAT","REPLACE","REPLACEALL", "SLICE","LOWERCASE","LOCALELOWERCASE", "UPPERCASE","LOCALEUPPERCASE","TRIM","LOCALECOMPARE","MATCH","SPLIT",
             "STARTSWITH", "ENDSWITH"]},
         input1        : String,
         input2        : String,
