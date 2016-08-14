@@ -10,6 +10,7 @@ module.exports = function () {
         name: {type: String, default: "Website Name"},
         description: String,
         dateCreated: {type: Date, default: Date.now},
+        dateModified: {type: Date, default: Date.now},
         // pages: [PageSchema]
         pages: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Page' }]
     }, {collection: "website"});

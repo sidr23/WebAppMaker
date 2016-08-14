@@ -132,6 +132,7 @@
         }
 
         function updateWebsite(website) {
+			website.dateModified = Date();
             WebsiteService
                 .updateWebsite(website)
                 .then(
@@ -151,7 +152,8 @@
         var vm = this;
         vm.developerId = $routeParams.developerId;
         vm.viewType = 'list';
-
+		vm.sortBy = 'name';
+		vm.reverse = false;
         vm.toggleView    = toggleView;
 
         function init () {
@@ -171,6 +173,11 @@
         function toggleView() {
             vm.viewType = vm.viewType === 'list' ? 'grid' : 'list';
         }
+		
+		vm.sortList = function(by, reverse){				
+			vm.sortBy = by;
+			vm.reverse = reverse;
+		}
     }
 
     function newWebsiteController (

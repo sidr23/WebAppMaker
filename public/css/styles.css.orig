@@ -1,0 +1,529 @@
+<<<<<<< HEAD
+.navbar-default.jga {
+    background-color: #428bca;
+    color: #fff;
+}
+
+.navbar-default.jga a,
+.navbar-default.jga button,
+.navbar-default.jga a:hover {
+    color: #fff;
+}
+
+a {
+    cursor: pointer;
+}
+
+.jga-widget {
+    margin-bottom: 5px;
+}
+
+.jga-nowrap {
+    white-space:nowrap;
+}
+
+.jga-bg-highlight-on-hover:hover {
+    background-color: #f5f5f5;
+}
+
+.jga-highlight-on-hover:hover {
+    box-shadow: 0px 0px 1px #aaa;
+}
+
+.form-control, .btn {
+    margin-bottom: 5px;
+}
+
+.navbar-header .btn {
+    position: relative;
+    top: 10px;
+}
+
+.navbar-header .btn.pull-right {
+    position: relative;
+    right: 7px;
+}
+
+.navbar-header .btn.pull-left {
+    padding-right: 0px;
+}
+
+.btn-transparent,
+.btn-transparent:hover {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:active {
+    background-color: transparent;
+}
+div.fill {
+    position:relative;
+
+    width: 150px;
+    height: 150px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden
+}
+div.fill img {
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%
+}
+.imageContainer {
+    width: 115px;
+    height: 115px;
+    line-height: 115px;
+    text-align: center;
+    border: 1px solid black;
+    background-size: 100%;
+}
+.resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+}
+
+
+
+.wrapper .cog {
+    position: absolute;
+    top: 0px;
+    right: 05px;
+    z-index: 1;
+    opacity: 10;
+    color:green;
+    background-color: whitesmoke;
+}
+.wrapper .plus{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+    opacity: 10;
+    color:red;
+    background-color: whitesmoke;
+}
+.wrapper .add{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+    opacity: 10;
+    color:dodgerblue;
+    background-color: whitesmoke;
+}
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table > tbody > tr > td {
+    border-top: 1px solid transparent;
+}
+
+.jga-widget-list-tools {
+    z-index: 1;
+    opacity: 10.0;
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+    overflow-y :scroll;
+}
+
+
+.jga-white-bg {
+    background-color: white !important;
+}
+
+.jga-margin-bottom-5px {
+    margin-bottom: 5px;
+}
+
+th {
+    text-transform: capitalize;
+}
+
+.jga-margin-right-5px {
+    margin-right: 5px;
+}
+
+.panel {
+    margin-bottom: 0px;
+}
+
+#registerForm.ng-submitted input.ng-invalid,
+#websiteForm.ng-submitted input.ng-invalid {
+    background-color: #FA787E;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wam-capitalize {
+    text-transform: capitalize;
+}
+
+.wam-no-padding-left-right {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.wam-no-padding-left {
+    padding-left: 0px;
+}
+
+.wam-no-padding-right {
+    padding-right: 0px;
+}
+
+.wam-font-size-double {
+    font-size: 2em;
+}
+
+.wam-nugde-6px-up {
+    position: relative;
+    top: -6px;
+}
+
+.wam-margin-bottom-5px {
+    margin-bottom: 5px;
+}
+
+.dropdown-menu.wam-left {
+    right: 0px;
+    left:  auto;
+}
+.customPadding {
+    padding-right: 10px;
+    padding-left: 10px
+}
+#sort-options button {
+    background : transparent;
+    border : none !important;
+}
+#sort-options ul li{
+	 padding: 5px 5px 10px 10px;
+	 color : gray;
+	 cursor : default;
+}
+#sort-options ul li:hover,#sort-options ul:active{
+	color : black;
+}
+#sort-options ul li span#list-icon{
+	 padding: 5px 20px 5px 5px;
+	 border-radius: 30%;
+     border: 1px solid #000;
+	 cursor : pointer;
+	 float : right;
+	 margin-left : 5px;
+}
+#sort-options ul li span#list-icon:hover,#sort-options ul li span#list-icon:active{
+	 background-color : #428bca;
+}
+#sort-options ul li span#list-label{
+	 padding: 5px 20px 5px 5px;
+}
+#sort-options button div#sort-button-text{
+	line-height : 50%;
+}
+#sort-options button#sort-button{
+	padding-top : 0px;
+}
+=======
+.navbar-default.jga {
+    background-color: #428bca;
+    color: #fff;
+}
+
+.navbar-default.jga a,
+.navbar-default.jga button,
+.navbar-default.jga a:hover {
+    color: #fff;
+}
+
+a {
+    cursor: pointer;
+}
+
+.jga-widget {
+    margin-bottom: 5px;
+}
+
+.jga-nowrap {
+    white-space:nowrap;
+}
+
+.jga-bg-highlight-on-hover:hover {
+    background-color: #f5f5f5;
+}
+
+.jga-highlight-on-hover:hover {
+    box-shadow: 0px 0px 1px #aaa;
+}
+
+.form-control, .btn {
+    margin-bottom: 5px;
+}
+
+.navbar-header .btn {
+    position: relative;
+    top: 10px;
+}
+
+.navbar-header .btn.pull-right {
+    position: relative;
+    right: 7px;
+}
+
+.navbar-header .btn.pull-left {
+    padding-right: 0px;
+}
+
+.btn-transparent,
+.btn-transparent:hover {
+    border-color: transparent;
+    background-color: transparent;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+}
+
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:active {
+    background-color: transparent;
+}
+div.fill {
+    position:relative;
+
+    width: 150px;
+    height: 150px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden
+}
+div.fill img {
+    flex-shrink:0;
+    min-width:100%;
+    min-height:100%
+}
+.imageContainer {
+    width: 115px;
+    height: 115px;
+    line-height: 115px;
+    text-align: center;
+    border: 1px solid black;
+    background-size: 100%;
+}
+.resize_fit_center {
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+}
+
+
+
+.wrapper .cog {
+    position: absolute;
+    top: 0px;
+    right: 05px;
+    z-index: 1;
+    opacity: 10;
+    color:green;
+    background-color: whitesmoke;
+}
+.wrapper .plus{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+    opacity: 10;
+    color:red;
+    background-color: whitesmoke;
+}
+.wrapper .add{
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+    opacity: 10;
+    color:dodgerblue;
+    background-color: whitesmoke;
+}
+.navbar-brand {
+    font-weight: bold;
+}
+
+.table > tbody > tr > td {
+    border-top: 1px solid transparent;
+}
+
+.jga-widget-list-tools {
+    z-index: 1;
+    opacity: 10.0;
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 5px;
+
+}
+.jga-widget-tool {
+    position: absolute;
+    right: 15px;
+    background-color: white;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    border-bottom-left-radius: 8px;
+    opacity: 0.7;
+    overflow-y :scroll;
+}
+
+
+.jga-white-bg {
+    background-color: white !important;
+}
+
+.jga-margin-bottom-5px {
+    margin-bottom: 5px;
+}
+
+th {
+    text-transform: capitalize;
+}
+
+.jga-margin-right-5px {
+    margin-right: 5px;
+}
+
+.panel {
+    margin-bottom: 0px;
+}
+
+#registerForm.ng-submitted input.ng-invalid,
+#websiteForm.ng-submitted input.ng-invalid {
+    background-color: #FA787E;
+}
+
+.youtube-widget {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.youtube-widget iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.wam-capitalize {
+    text-transform: capitalize;
+}
+
+.wam-no-padding-left-right {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.wam-no-padding-left {
+    padding-left: 0px;
+}
+
+.wam-no-padding-right {
+    padding-right: 0px;
+}
+
+.wam-font-size-double {
+    font-size: 2em;
+}
+
+.wam-nugde-6px-up {
+    position: relative;
+    top: -6px;
+}
+
+.wam-margin-bottom-5px {
+    margin-bottom: 5px;
+}
+
+.dropdown-menu.wam-left {
+    right: 0px;
+    left:  auto;
+}
+.customPadding {
+    padding-right: 10px;
+    padding-left: 10px
+}
+
+/*Added by @manasa-konidena*/
+
+.landscape-right{
+    width: 65.66%;
+    float: right;
+}
+
+.landscape-right-offset{
+    width: 69.66%;
+    float: right;
+}
+
+.padding{
+    padding-top: 15px;
+}
+
+.vr {
+    width:1px;
+    background-color: darkgray;
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:35.33%;
+    right:64.66%;
+}
+>>>>>>> master
