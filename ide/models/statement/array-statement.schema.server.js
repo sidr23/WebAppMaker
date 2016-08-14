@@ -12,7 +12,9 @@ module.exports = function() {
         applicableFunction: Object,
         baseValue: Object,
         singleElement: Object,
-        index: Object
+        index: Object,
+        index1: Object,
+        index2:Object
 
     });
 

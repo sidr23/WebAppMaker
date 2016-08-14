@@ -6,44 +6,64 @@ module.exports = function () {
 
     function execute(statement, model) {
 
-        var arg1, arg2, arg3, arg4, arg5;
-        if(statement.input[0]) {
-            arg1 = model[statement.input[0].variable];
-            if(typeof arg1 === 'undefined') {
-                arg1 = statement.input[0].literal;
+        var array1, array2, applicableFunction;
+        if(statement.arrayStatement.array1){
+            array1 = model[statement.arrayStatement.array1.variable];
+            if(typeof array1 === 'undefined') {
+                array1 = statement.arrayStatement.array1.literal;
             }
         }
-        if(statement.input[1]) {
-            arg2 = model[statement.input[1].variable];
-            if(typeof arg2 === 'undefined') {
-                arg2 = statement.input[1].literal;
+        if(statement.arrayStatement.array2){
+            array2 = model[statement.arrayStatement.array2.variable];
+            if(typeof array2 === 'undefined') {
+                array2 = statement.arrayStatement.array2.literal;
             }
         }
-        if(statement.input[2]) {
-            arg3 = model[statement.input[2].variable];
-            if(typeof arg3 === 'undefined') {
-                arg3 = statement.input[2].literal;
+        if(statement.arrayStatement.applicableFunction){
+            applicableFunction = model[statement.arrayStatement.applicableFunction.variable];
+            if(typeof applicableFunction === 'undefined') {
+                applicableFunction = statement.arrayStatement.applicableFunction.literal;
             }
         }
-        if(statement.input[3]) {
-            arg4 = model[statement.input[3].variable];
-            if(typeof arg4 === 'undefined') {
-                arg4 = statement.input[3].literal;
-            }
-        }
-        if(statement.input[4]) {
-            arg5 = model[statement.input[4].variable];
-            if(typeof arg5 === 'undefined') {
-                arg5 = statement.input[4].literal;
-            }
-        }
+
+
+        // if(statement.input[0]) {
+        //     arg1 = model[statement.input[0].variable];
+        //     if(typeof arg1 === 'undefined') {
+        //         arg1 = statement.input[0].literal;
+        //     }
+        // }
+        // if(statement.input[1]) {
+        //     arg2 = model[statement.input[1].variable];
+        //     if(typeof arg2 === 'undefined') {
+        //         arg2 = statement.input[1].literal;
+        //     }
+        // }
+        // if(statement.input[2]) {
+        //     arg3 = model[statement.input[2].variable];
+        //     if(typeof arg3 === 'undefined') {
+        //         arg3 = statement.input[2].literal;
+        //     }
+        // }
+        // if(statement.input[3]) {
+        //     arg4 = model[statement.input[3].variable];
+        //     if(typeof arg4 === 'undefined') {
+        //         arg4 = statement.input[3].literal;
+        //     }
+        // }
+        // if(statement.input[4]) {
+        //     arg5 = model[statement.input[4].variable];
+        //     if(typeof arg5 === 'undefined') {
+        //         arg5 = statement.input[4].literal;
+        //     }
+        // }
         
-        switch (statement.operation) {
+        switch (statement.arrayStatement.operation) {
             case 'CONCAT' :
-                model[statement.output] = arg1.concat(arg2);
+                model[statement.output] = array1.concat(array2);
                 break;
             case 'EVERY' :
-                model[statement.output] = arg1.every(arg3);
+                model[statement.output] = array1.every(applicableFunction);
                 break;
             case 'FILL':
                 model[statement.output] = arg1.fill(arg2);
