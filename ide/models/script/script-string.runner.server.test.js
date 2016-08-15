@@ -4,502 +4,491 @@
 
 var statements = [
     {
-        type: 'STRING',
-        operation: 'CONCATENATE',
-        input: [
-            {variable: 'tobe'},
-            {variable: 'Nottobe'}
-        ],
-        output: 'concat_result'
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'CONCATENATE',
+            string1: {variable: 'tobe'},
+            string2: {variable: 'Nottobe'}
+        },
+            output: 'concat_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'concat_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SUBSTRING',
-        input: [
-            {literal: 'Hello World'},
-            {literal: '1'},
-            {literal: '6'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SUBSTRING',
+            string1: {literal: 'HelloWorld'},
+            index: {literal: '1'},
+            length: {literal: '6'}
+        },
         output: 'substring_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'substring_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SUBSTR',
-        input: [
-            {literal: 'Hello World'},
-            {literal: '1'},
-            {literal: '6'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SUBSTR',
+            string1: {literal: 'HelloWorld'},
+            index  : {literal: '1'},
+            length : {literal: '6'}
+        },
         output: 'substr_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'substr_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LENGTH',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LENGTH',
+            string1: {variable: 'tobe'}
+        },
         output: 'len_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'len_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'INCLUDES',
-        input: [
-            {literal: 'Be it'},
-            {literal: 'Be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'INCLUDES',
+            string1: {literal: 'Be it'},
+            string2: {literal: 'Be'}
+        },
         output: 'includes_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'includes_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'INCLUDES',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'INCLUDES',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'be'}
+        },
         output: 'includes_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'includes_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'INCLUDES',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'be'}
-        ],
-        output: 'includes_neg_result'
-    },
-    {
-        type: 'CONSOLE',
-        operation: 'LOG',
-        input:[{variable: 'includes_neg_result'}]
-    },
-    {
-        type: 'STRING',
-        operation: 'INDEXOF',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'Be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'INDEXOF',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Be'}
+        },
         output: 'indexOf_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'indexOf_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'INDEXOF',
-        input: [
-            {variable: 'tobe'},
-            {variable: 'Nottobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'INDEXOF',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Nottobe'}
+        },
         output: 'indexOf_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'indexOf_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'CHARAT',
-        input: [
-            {variable: 'tobe'},
-            {literal: '3'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'CHARAT',
+            string1: {variable: 'tobe'},
+            index: {literal: '3'}
+        },
         output: 'charAt_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'CharAt_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'CHARAT',
-        input: [
-            {variable: 'tobe'},
-            {literal: '6'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'CHARAT',
+            string1: {variable: 'tobe'},
+            index: {literal: '6'}
+        },
         output: 'charAt_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'CharAt_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'CHARCODEAT',
-        input: [
-            {variable: 'tobe'},
-            {literal: '3'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'CHARCODEAT',
+            string1: {literal: 'HelloWorld'},
+            index: {literal: '0'}
+        },
         output: 'charCodeAt_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'charCodeAt_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LASTINDEXOF',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'B'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LASTINDEXOF',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'B'}
+        },
         output: 'lastIndex_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'lastIndex_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LASTINDEXOF',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'Y'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LASTINDEXOF',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Y'}
+        },
         output: 'lastIndex_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'lastIndex_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SEARCH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'B'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SEARCH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'B'}
+        },
         output: 'search_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'search_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SEARCH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'Y'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SEARCH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Y'}
+        },
         output: 'search_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'search_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'REPEAT',
-        input: [
-            {variable: 'tobe'},
-            {literal: '3'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'REPEAT',
+            string1: {variable: 'tobe'},
+            count: {literal: '3'}
+        },
         output: 'repeat_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'repeat_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'REPLACE',
-        input: [
-            {literal: 'Hello Hello World'},
-            {literal:'Hello'},
-            {literal:'World'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'REPLACE',
+            string1: {literal: 'Hello Hello World'},
+            string2: {literal:'Hello'},
+            string3: {literal:'World'}
+        },
         output: 'replace_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'replace_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'REPLACEALL',
-        input: [
-            {literal: 'Hello Hello World'},
-            {literal:'Hello'},
-            {literal:'World'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'REPLACEALL',
+            string1: {literal: 'Hello Hello World'},
+            string2: {literal:'Hello'},
+            string3: {literal:'World'}
+        },
         output: 'replaceAll_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'replaceAll_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SLICE',
-        input: [
-            {variable: 'tobe'},
-            {literal: '3'},
-            {literal: '5'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SLICE',
+            string1: {variable: 'tobe'},
+            index:  {literal: '3'},
+            length: {literal: '5'}
+        },
         output: 'slice_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'slice_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SLICE',
-        input: [
-            {variable: 'tobe'},
-            {literal: '6'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SLICE',
+            string1: {variable: 'tobe'},
+            index:  {literal: '6'},
+            length: {literal: '9'}
+        },
         output: 'slice_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'slice_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOWERCASE',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOWERCASE',
+            string1: {variable: 'tobe'}
+        },
         output: 'lcase_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'lcase_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOCALELOWERCASE',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOCALELOWERCASE',
+            string1: {variable: 'tobe'}
+        },
         output: 'localelcase_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'localelcase_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'UPPERCASE',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'UPPERCASE',
+            string1: {variable: 'tobe'}
+        },
         output: 'ucase_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'ucase_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOCALEUPPERCASE',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOCALEUPPERCASE',
+            string1: {variable: 'tobe'}
+        },
         output: 'localeucase_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'localeucase_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'TRIM',
-        input: [{literal: ' tobe '}],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'TRIM',
+            string1: {literal: ' tobe '}
+        },
         output: 'trim_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'trim_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOCALECOMPARE',
-        input: [
-            {literal: 'To Be'},
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOCALECOMPARE',
+            string1: {literal: 'To Be'},
+            string2: {variable: 'tobe'}
+        },
         output: 'localeCompare_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'localeCompare_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOCALECOMPARE',
-        input: [
-            {literal: 'ab'},
-            {literal: 'de'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOCALECOMPARE',
+            string1: {literal: 'ab'},
+            string2: {literal: 'de'}
+        },
         output: 'localeCompare_str1sorted_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'localeCompare_str1sorted_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'LOCALECOMPARE',
-        input: [
-            {literal: 'cd'},
-            {literal: 'ab'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'LOCALECOMPARE',
+            string1: {literal: 'cb'},
+            string2: {literal: 'ab'}
+        },
         output: 'localeCompare_str2sorted_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'localeCompare_str2sorted_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'MATCH',
-        input: [
-            {literal: 'to be to be'},
-            {literal: 'be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'MATCH',
+            string1: {literal: 'to be to be'},
+            string2: {literal: 'be'}
+        },
         output: 'match_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'match_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'SPLIT',
-        input: [
-            {literal: 'to be to be'},
-            {literal:' '}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'SPLIT',
+            string1: {literal: 'to be to be'},
+            string2: {literal: ' '}
+        },
         output: 'split_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'split_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'STARTSWITH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'To'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'STARTSWITH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'To'}
+        },
         output: 'startsWith_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'startsWith_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'STARTSWITH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'Be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'STARTSWITH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Be'}
+        },
         output: 'startsWith_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'startsWith_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'ENDSWITH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'Be'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'ENDSWITH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'Be'}
+        },
         output: 'endsWith_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'endsWith_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'ENDSWITH',
-        input: [
-            {variable: 'tobe'},
-            {literal: 'To'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'ENDSWITH',
+            string1: {variable: 'tobe'},
+            string2: {literal: 'To'}
+        },
         output: 'endsWith_neg_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'endsWith_neg_result'}]
     },
     {
-        type: 'STRING',
-        operation: 'VALUEOF',
-        input: [
-            {variable: 'tobe'}
-        ],
+        statementType: 'STRING',
+        stringStatement : {
+            operation: 'VALUEOF',
+            string1: {variable: 'tobe'}
+        },
         output: 'valueOf_result'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'valueOf_result'}]
     },
