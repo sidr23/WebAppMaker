@@ -8,20 +8,20 @@ module.exports = function () {
 
 //      console.log(statement, model);
         var operand1, operand2;
-        if(statement.input[0]) {
-            operand1 = model[statement.input[0].variable];
+        if(statement.numberStatement.operand1) {
+            operand1 = model[statement.numberStatement.operand1.variable];
             if(typeof operand1 === 'undefined') {
-                operand1 = statement.input[0].literal;
+                operand1 = statement.numberStatement.operand1.literal;
             }
         }
-        if(statement.input[1]) {
-            operand2 = model[statement.input[1].variable];
+        if(statement.numberStatement.operand2) {
+            operand2 = model[statement.numberStatement.operand2.variable];
             if(typeof operand2 === 'undefined') {
-                operand2 = statement.input[1].literal;
+                operand2 = statement.numberStatement.operand2.literal;
             }
         }
 
-        switch (statement.operation) {
+        switch (statement.numberStatement.operation) {
             case 'VARIABLE' :
                 model[statement.output] = operand1;
                 break;
