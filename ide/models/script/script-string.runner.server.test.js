@@ -33,7 +33,7 @@ var statements = [
         input:[{variable: 'substring_result'}]
     },
     {
-        statementType: 'SUBSTR',
+        statementType: 'STRING',
         stringStatement : {
             operation: 'SUBSTR',
             string1: {literal: 'HelloWorld'},
@@ -148,8 +148,8 @@ var statements = [
         statementType: 'STRING',
         stringStatement : {
             operation: 'CHARCODEAT',
-            string1: {variable: 'tobe'},
-            index: {literal: '3'}
+            string1: {literal: 'HelloWorld'},
+            index: {literal: '0'}
         },
         output: 'charCodeAt_result'
     },
