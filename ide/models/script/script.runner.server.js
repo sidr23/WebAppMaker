@@ -27,7 +27,7 @@ module.exports = function() {
         var index = 0;
         do {
             var statement = statements[index];
-            var runner = runners[statement.type];
+            var runner = runners[statement.statementType];
             var nextLabel = runner.execute(statement, model);
             if(nextLabel) {
                 index = label2indexMap[nextLabel];
