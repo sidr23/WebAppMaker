@@ -16,7 +16,7 @@ module.exports = function() {
         ifStatement: require("./if-statement.schema.server")(),
         booleanStatement: require("./boolean-statement.schema.server")(),
         arrayStatement: require("./array-statement.schema.server")(),
-        ouput: String
+        output: String
     }, {collection: 'statement'});
 
     return StatementSchema;

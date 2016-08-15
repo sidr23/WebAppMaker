@@ -8,7 +8,7 @@ var statements = [
         arrayStatement : {
             operation: 'CONCAT',
             array1: {variable: 'A'},
-            array2: {variable: 'B'}
+            array2: {literal: ["mongodb", "expressjs", "angularjs", "nodejs"]}
         },
         output: 'C'
     },
@@ -46,7 +46,10 @@ var statements = [
         arrayStatement : {
             operation: 'FILTER',
             array1: {variable: 'A'},
-            applicableFunction: {variable: 'E'}
+            applicableFunction: {literal: function (element) {
+                return (element % 2)==0;
+            }}
+            // applicableFunction: {variable: 'E'}
         },
         output: 'C'
     },
@@ -83,7 +86,7 @@ var statements = [
         statementType: 'ARRAY',
         arrayStatement: {
             operation: 'FINDINDEX',
-            array1: {variable: 'B'},
+            array1: {literal: ["web", "dev", "ftw"]},
             applicableFunction: {variable: 'F'}
         },
         output: 'C'
@@ -140,7 +143,7 @@ var statements = [
         statementType: 'ARRAY',
         arrayStatement: {
             operation: 'ISARRAY',
-            array1: {variable: 'B'}
+            array1: {literal: [123, 456, 675]}
         },
         output: 'C'
     },
@@ -386,7 +389,7 @@ var statements = [
         statementType: 'ARRAY',
         arrayStatement: {
             operation: 'TOSTRING',
-            array1: {variable:'B'}
+            array1: {literal: [123, 234, 345, 456, 567]}
         },
         output: 'C'
     },
