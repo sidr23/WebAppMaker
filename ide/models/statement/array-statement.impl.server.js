@@ -6,113 +6,117 @@ module.exports = function () {
 
     function execute(statement, model) {
 
-        var arg1, arg2;
-        if(statement.input[0]) {
-            arg1 = model[statement.input[0].variable];
-            if(typeof arg1 === 'undefined') {
-                arg1 = statement.input[0].literal;
+        var array1, array2, applicableFunction, singleElement, index1, index2;
+        if(statement.arrayStatement.array1){
+            array1 = model[statement.arrayStatement.array1.variable];
+            if(typeof array1 === 'undefined') {
+                array1 = statement.arrayStatement.array1.literal;
             }
         }
-        if(statement.input[1]) {
-            arg2 = model[statement.input[1].variable];
-            if(typeof arg2 === 'undefined') {
-                arg2 = statement.input[1].literal;
+        if(statement.arrayStatement.array2){
+            array2 = model[statement.arrayStatement.array2.variable];
+            if(typeof array2 === 'undefined') {
+                array2 = statement.arrayStatement.array2.literal;
+            }
+        }
+        if(statement.arrayStatement.applicableFunction){
+            applicableFunction = model[statement.arrayStatement.applicableFunction.variable];
+            if(typeof applicableFunction === 'undefined') {
+                applicableFunction = statement.arrayStatement.applicableFunction.literal;
+            }
+        }
+        if(statement.arrayStatement.singleElement){
+            singleElement = model[statement.arrayStatement.singleElement.variable];
+            if(typeof singleElement === 'undefined') {
+                singleElement = statement.arrayStatement.singleElement.literal;
+            }
+        }
+        if(statement.arrayStatement.index1){
+            index1 = model[statement.arrayStatement.index1.variable];
+            if(typeof index1 === 'undefined') {
+                index1 = statement.arrayStatement.index1.literal;
+            }
+        }
+        if(statement.arrayStatement.index2){
+            index2 = model[statement.arrayStatement.index2.variable];
+            if(typeof index2 === 'undefined') {
+                index2 = statement.arrayStatement.index2.literal;
             }
         }
 
-        switch (statement.operation) {
+
+        switch (statement.arrayStatement.operation) {
             case 'CONCAT' :
-                model[statement.output] = arg1.concat(arg2);
+                model[statement.output] = array1.concat(array2);
                 break;
             case 'EVERY' :
-                model[statement.output] = arg1.every(function (element) {
-                    return element >= arg2;
-                });
+                model[statement.output] = array1.every(applicableFunction);
                 break;
             case 'FILL':
-                model[statement.output] = arg1.fill(arg2);
+                model[statement.output] = array1.fill(singleElement);
                 break;
             case 'FILTER' :
-                model[statement.output] = arg1.filter(function (element) {
-                    return element >= arg2;
-                });
+                model[statement.output] = array1.filter(applicableFunction);
                 break;
             case 'FIND' :
-                model[statement.output] = arg1.find(function (element) {
-                    return element === arg2;
-                });
+                model[statement.output] = array1.find(applicableFunction);
                 break;
             case 'FINDINDEX' :
-                model[statement.output] = arg1.findIndex(function (element) {
-                    return element === arg2;
-                });
+                model[statement.output] = array1.findIndex(applicableFunction);
                 break;
             case 'FOREACH' :
-                var sum = 0;
-                arg1.forEach(function (element) {
-                    sum += element;
-                });
-                model[statement.output] = sum;
+                array1.forEach(applicableFunction);
                 break;
             case 'INDEXOF' :
-                model[statement.output] = arg1.indexOf(arg2);
+                model[statement.output] = array1.indexOf(singleElement);
                 break;
             case 'ISARRAY' :
-                model[statement.output] = Array.isArray(arg1);
+                model[statement.output] = Array.isArray(array1);
                 break;
             case 'JOIN' :
-                model[statement.output] = arg1.join();
+                model[statement.output] = array1.join(singleElement);
                 break;
             case 'LASTINDEXOF' :
-                model[statement.output] = arg1.lastIndexOf(arg2);
+                model[statement.output] = array1.lastIndexOf(singleElement);
                 break;
             case 'MAP' :
-                model[statement.output] = arg1.map(function (element) {
-                    var temp = element + arg2 + "";
-                    return temp;
-                });
+                model[statement.output] = array1.map(applicableFunction);
                 break;
             case 'POP' :
-                model[statement.output] = arg1.pop();
+                model[statement.output] = array1.pop();
                 break;
             case 'PUSH' :
-                model[statement.output] = arg1.push(arg2);
+                model[statement.output] = array1.push(singleElement);
                 break;
             case 'REDUCE' :
-                model[statement.output] = arg1.reduce(function (ele, total) {
-                    return ele + total ;
-                });
+                model[statement.output] = array1.reduce(applicableFunction);
                 break;
             case 'REDUCERIGHT' :
-                model[statement.output] = arg1.reduceRight(function (ele, total) {
-                    return ele + total ;
-                });
+                model[statement.output] = array1.reduceRight(applicableFunction);
                 break;
             case 'SHIFT' :
-                model[statement.output] = arg1.shift();
+                model[statement.output] = array1.shift();
                 break;
             case 'SLICE' :
-                model[statement.output] = arg1.slice(0,2);
+                model[statement.output] = array1.slice(index1, index2);
                 break;
             case 'SOME' :
-                model[statement.output] = arg1.some(function (element) {
-                    return element <= arg2;
-                });
+                model[statement.output] = array1.some(applicableFunction);
                 break;
             case 'SORT' :
-                model[statement.output] = arg1.sort();
+                model[statement.output] = array1.sort();
                 break;
             case 'SPLICE':
-                arg1.splice(2, 0, "script", "runner");
+                array1.splice(index1, index2, singleElement);
                 break;
             case 'TOSTRING' :
-                model[statement.output] = arg1.toString();
+                model[statement.output] = array1.toString();
                 break;
             case 'UNSHIFT' :
-                model[statement.output] = arg1.unshift(arg2);
+                model[statement.output] = array1.unshift(singleElement);
                 break;
             case 'VALUEOF' :
-                model[statement.output] = arg1.valueOf();
+                model[statement.output] = array1.valueOf();
                 break;
 
         }
