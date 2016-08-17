@@ -1,80 +1,67 @@
 var statements = [
     {
         type: 'DATABASE',
-        operation: 'Insert',
-        input: [
-            {literal:"Student"},
-            {literal:{"id":123,"name":"Joey","grade":"10"}}
-        ],
-        output:'insert_student_result',
-
         databaseStatement: {
             operation: {
                 type: 'INSERT'
             },
             collectionName: {literalString: 'Student'},
             record: {literalObject: {"id":123,"name":"Joey","grade":"10"}}
-        }
+        },
+        output:'insert_student_result'
     },
     {
         type: 'DATABASE',
-        operation: 'Insert',
-        input: [
-            {variable:"collectionName1"},
-            {literal:{"employee_id":"F.R.I.E.N.D.S05","employee_name":"Joey","department":"Stupidity","location":"Central Perk"}}
-        ],
+
+        databaseStatement: {
+            operation:{
+                type: 'INSERT'
+            },
+            collectionName: {variable: "collectionName1"},
+            record: {
+                literalObject: {
+                    "employee_id": "F.R.I.E.N.D.S05",
+                    "employee_name": "Joey",
+                    "department": "Stupidity",
+                    "location": "Central Perk"
+                }
+            }
+        },
         output:'insert_employee_result'
     },
     {
         type: 'DATABASE',
-        operation: 'Select',
-        input: [
-            {variable:'collectionName2'},
-            {literal:{"id":"123"}}
-        ],
-        output:'select_student_result',
-
         databaseStatement: {
             operation: {
-                type: 'INSERT'
+                type: 'SELECT'
             },
             collectionName: {variable: 'collectionName2'},
             filter: {literalObject: {"id":123}}
-        }
-    },
-    {
-        type: 'DATABASE',
-        operation: 'Select',
-        input: [
-            {variable:'collectionName2'},
-            {literal:{"id":"123"}}
-        ],
+        },
         output:'select_student_result'
     },{
         type: 'DATABASE',
-        operation: 'Select',
-        input: [
-            {variable:'collectionName2'},
-            {literal:{"id":"123"}}
-        ],
-        output:'select_student_result'
-    },{
-        type: 'DATABASE',
-        operation: 'Update',
-        input: [
-            {variable:'collectionName2'},
-            {literal:{"id":123}},
-            {literal:{"name":"Ross"}}
-        ],
+        databaseStatement:{
+            operation:{
+                type: 'UPDATE'
+            },
+            collectionName:{variable: 'collectionName2'},
+            record:{literalObject:{"name":"Ross"}},
+            filter:{literalObject:{"id":123}}
+        },
         output:'update_student_result'
-    },
+    }
+
+    ,
     {
         type: 'DATABASE',
-        operation: 'Delete',
-        input: [
-            {variable:'collectionName2'},
-            {literal:{"id":123}}
-        ],
+        databaseStatement:{
+            operation:{
+                type: 'DELETE'
+            },
+            collectionName:{variable: 'collectionName2'},
+            filter:{literalObject:{"id":123}}
+        },
         output:'delete_student_result'
     }
 

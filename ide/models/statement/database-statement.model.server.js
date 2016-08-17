@@ -30,7 +30,7 @@ module.exports = function(db){
     function insertRecords(operand1,operand2){
 
         var deferred = q.defer();
-        db.collection(operand1).insert(operand2,function (err,docs) {
+        db.collection(operand1).update(operand2,operand2,{upsert:true},function (err,docs) {
             if(err) {
                 deferred.reject(err);
             }

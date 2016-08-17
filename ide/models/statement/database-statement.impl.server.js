@@ -8,35 +8,35 @@ module.exports = function (db) {
     return api;
     var result ="";
     function execute(statement, model){
-        var  operand1, operand2, operand3;
-        if(statement.input[0]) {
-            operand1 = model[statement.input[0].variable];
-            if(typeof operand1 === 'undefined') {
-                operand1 = statement.input[0].literal;
+        var  collectionName, filter, record;
+        if(statement.databaseStatement.collectionName) {
+            collectionName = model[statement.databaseStatement.collectionName.variable];
+            if(typeof collectionName === 'undefined') {
+                collectionName = statement.databaseStatement.collectionName.literalString;
             }
         }
-        if(statement.input[1]) {
-            operand2 = model[statement.input[1].variable];
-            if(typeof operand2 === 'undefined') {
-                operand2 = statement.input[1].literal;
+        if(statement.databaseStatement.filter) {
+            filter = model[statement.databaseStatement.filter.variable];
+            if(typeof filter === 'undefined') {
+                filter = statement.databaseStatement.filter.literalObject;
             }
         }
-        if(statement.input[2]) {
-            operand3 = model[statement.input[2].variable];
-            if(typeof operand3 === 'undefined') {
-                operand3 = statement.input[2].literal;
+        if(statement.databaseStatement.record) {
+            record = model[statement.databaseStatement.record.variable];
+            if(typeof record === 'undefined') {
+                record = statement.databaseStatement.record.literalObject;
             }
         }
 
 
-        var collection =  db.collection(operand1);
+        var collection =  db.collection(collectionName);
 
 
-        switch (statement.operation) {
-            case 'Select' :
+        switch (statement.databaseStatement.operation.type) {
+            case 'SELECT' :
                 var temp ="";
 
-                    dbStmtModel.selectRecords(operand1, operand2).then(function (results) {
+                    dbStmtModel.selectRecords(collectionName, filter).then(function (results) {
                         result = results;
                         model[statement.output] = result;
                     }, function (err) {
@@ -44,10 +44,10 @@ module.exports = function (db) {
                     });
 
                 break;
-            case 'Insert' :
+            case 'INSERT' :
                 var temp ="";
 
-                     dbStmtModel.insertRecords(operand1, operand2).then(function (results) {
+                     dbStmtModel.insertRecords(collectionName, record).then(function (results) {
                          console.log("results",results);
                         result = results;
                      }, function (err) {
@@ -55,16 +55,16 @@ module.exports = function (db) {
                      });
                 model[statement.output] = result;
                 break;
-            case 'Update' :
-                dbStmtModel.updateRecords(operand1, operand2,operand3).then(function (results) {
+            case 'UPDATE' :
+                dbStmtModel.updateRecords(collectionName, filter,record).then(function (results) {
                     console.log("results",results);
                     result = results;
                 }, function (err) {
                     return err;
                 });
                 break;
-            case 'Delete' :
-                dbStmtModel.deleteRecords(operand1, operand2).then(function (results) {
+            case 'DELETE' :
+                dbStmtModel.deleteRecords(collectionName, filter).then(function (results) {
                     console.log("results",results);
                     result = results;
                 }, function (err) {

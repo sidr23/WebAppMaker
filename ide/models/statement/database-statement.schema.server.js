@@ -5,9 +5,12 @@ module.exports = function() {
 
     var DatabaseStatementSchema = mongoose.Schema({
         operation : {
-            type: {type: String, enum: ['SELECT', 'INSERT']},
-            label: {type: String, enum: ["Select", "Insert", "Update", "Delete"]}
+           type: String, enum: ['SELECT', 'INSERT','UPDATE','DELETE']
         },
+        //record            : {literalObject: Object, variable: String},
+        //collectionName    : {literalString: Object, variable: String},
+        //filter          : {literalObject: Object, variable: String},
+        //resultOperation: String
         record            : {literalObject: Object, variable: String},
         collectionName    : {literalString: Object, variable: String},
         filter          : {literalObject: Object, variable: String},
