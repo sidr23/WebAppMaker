@@ -48,7 +48,11 @@
         <div class="row">
             <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites | orderBy : model.sortBy : model.reverse">
                 <div class="thumbnail">
-                    <img src="" alt="...">
+
+                    <object data="../../thumbnails/{{model.developerId}}/{{website._id}}.png" type="image/png" class="thumbnail-preview">
+                        <img src="../../ide/images/thumbnail-placeholder.png" class="thumbnail-preview"/>
+                    </object>
+
                     <div class="caption">
                         <p>
                             <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
@@ -61,6 +65,7 @@
                             </a>
                         </p>
                     </div>
+
                 </div>
             </div>
         </div>
