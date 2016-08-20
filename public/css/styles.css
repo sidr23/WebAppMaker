@@ -316,3 +316,11 @@ th {
         font-size: 10px;
     }
 }
+
+.thumbnail-preview {
+    max-width: 400px;
+    max-height: 225px;
+    vertical-align: middle;
+    margin: auto;
+    display: block;
+}
