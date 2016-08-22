@@ -32,7 +32,6 @@
             {label: 'Database', value: 'DATABASE'}
         ];
         vm.statementType = vm.statementTypes[0];
-
         vm.filters = [
             {variable1: "var 1", value1: "", comparator: "=", variable2: "var 2", value2: ""},
             {variable1: "var 3", value1: "", comparator: ">", variable2: "var 3", value2: ""},
@@ -106,6 +105,30 @@
             {label: 'Ends With',    value: 'ENDSWITH'}
         ];
 
+        vm.numberOperations = [
+            {label: '+',    value: 'ADDITION'},
+            {label: '-',  value: 'SUBTRACTION'},
+            {label: '*',       value: 'MULTIPLICATION'},
+            {label: '/',      value: 'DIVISION'},
+            {label: '>',      value: 'GREATER_THAN'},
+            {label: '>=',      value: 'GREATER_THAN_EQUAL_TO'},
+            {label: '<',      value: 'LESSER_THAN'},
+            {label: '<=',      value: 'LESSER_THAN_EQUAL_TO'},
+            {label: '==',      value: 'EQUAL_TO'},
+            {label: 'pow',      value: 'POWER'},
+            {label: 'log',      value: 'LOGARITHM'},
+            {label: 'round',      value: 'ROUND'},
+            {label: 'abs',      value: 'ABSOLUTE'},
+            {label: 'e power',      value: 'EXPONENTIAL'},
+            {label: 'cosine',      value: 'COS'},
+            {label: 'sine',      value: 'SIN'},
+            {label: 'tan',      value: 'TAN'},
+            {label: 'ceil',      value: 'CEIL'},
+            {label: 'floor',      value: 'FLOOR'},
+            {label: 'sqrt',      value: 'SQRT'},
+            {label: 'variable',      value: 'VARIABLE'}
+        ];
+
         //$(".input-date#date1").datepicker();
         //$("#date2").datepicker();
 
@@ -119,6 +142,7 @@
         vm.statementId = $routeParams.statementId;
 
         // event handlers
+
         vm.saveStatement = saveStatement;
         vm.deleteStatement = deleteStatement;
 
@@ -154,8 +178,17 @@
                             vm.statement = response.data;
                             //AW: Selected types are repopulated from the retrieved statement
                             if(vm.statement != null) {
+
+                                console.log(vm.statement.output );
+                                vm.statement.output=vm.statement.output;
+                                if(vm.statement.statementType === "NUMBER")
+                                    vm.numberOperation = getType(vm.numberOperations, vm.statement.numberStatement.operation);
+
+                                if(vm.statement.statementType === "STRING")
+                                    vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operation);
+
                                 vm.statementType = getType(vm.statementTypes, vm.statement.statementType);
-                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
+
                             }
                         },
                         function(err) {
@@ -169,6 +202,7 @@
                     function(response) {
                         vm.statements = response.data;
                         vm.stmtvariables =[];
+
                         for(var stmt in vm.statements){
                             var st = vm.statements[stmt];
                             if (st.stringStatement && st.stringStatement.output){
@@ -177,8 +211,9 @@
                             if (st.booleanStatement && st.booleanStatement.output){
                                 vm.stmtvariables.push(st.booleanStatement.output)
                             }
-                            if (st.numberStatement && st.numberStatement.output){
-                                vm.stmtvariables.push(st.numberStatement.output)
+                            console.log("response " + st.output);
+                            if (st.numberStatement && st.output){
+                                vm.stmtvariables.push(st.output)
                             }
                             if (st.dateStatement && st.dateStatement.resultVariable){
                                 vm.stmtvariables.push(st.dateStatement.resultVariable)
@@ -209,14 +244,17 @@
 
         function saveStatement() {
 
-            // console.log(vm.statement);
+
             vm.statement.name= vm.statementName;
             // vm.dateStatement.dateOperation = vm.statement.dateStatement.dateOperation.label;
             vm.statement.statementType = vm.statementType.value;
-
+            vm.output = vm.statement.output;
+            //console.log("saved "+ vm.statement.output);
+            if(vm.statement.statementType === "NUMBER")
+                vm.statement.numberStatement.operation = vm.numberOperation.value;
             //AW: Specific to String statements
             if(vm.statement.statementType === "STRING")
-                vm.statement.stringStatement.operationType = vm.stringOperation.value;
+                vm.statement.stringStatement.operation = vm.stringOperation.value;
 
             if (vm.statementType.label === "If")
                 vm.statement.ifStatement.comparator = vm.statement.ifStatement.comparator.label;
@@ -231,6 +269,7 @@
                 .saveStatement(vm, vm.statement)
                 .then(
                     function() {
+                        //console.log ("save state "+ vm.statement.output)
                         $location.url("/developer/"+vm.developerId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget/"+vm.widgetId+"/script");
                     },
                     function(err) {

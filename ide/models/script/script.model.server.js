@@ -37,6 +37,7 @@ module.exports = function(websiteModel) {
     }
 
     function updateStatement(scope, newStatement) {
+        console.log("newStatement" + newStatement);
         return websiteModel
             .findWebsiteById(scope.websiteId)
             .then(
@@ -51,10 +52,11 @@ module.exports = function(websiteModel) {
                         if(!statement.numberStatement) {
                             statement.numberStatement = {};
                         }
+                        console.log("newStatement" + newStatement);
                         statement.numberStatement.input1 = newStatement.numberStatement.input1;
                         statement.numberStatement.input2 = newStatement.numberStatement.input2;
-                        statement.numberStatement.output = newStatement.numberStatement.output;
-                        statement.numberStatement.operationType = newStatement.numberStatement.operationType;
+                        statement.output = newStatement.output;
+                        statement.numberStatement.operation = newStatement.numberStatement.operation;
                     }
 
                     return website.save();
@@ -135,7 +137,7 @@ module.exports = function(websiteModel) {
                     var statement = new StatementModel({
                         statementType: scope.statementType
                     });
-
+                    console.log("addst "+ statement);
                     widget.button.script.statements.push(statement);
 
                     return website.save();
