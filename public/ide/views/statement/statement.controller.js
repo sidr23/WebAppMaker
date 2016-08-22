@@ -106,6 +106,29 @@
             {label: 'Ends With',    value: 'ENDSWITH'}
         ];
 
+        vm.numberOperations = [
+            {label: '+',    value: 'ADDITION'},
+            {label: '-',  value: 'SUBTRACTION'},
+            {label: '*',       value: 'MULTIPLICATION'},
+            {label: '/',      value: 'DIVISION'},
+            {label: '>',      value: 'GREATER_THAN'},
+            {label: '>=',      value: 'GREATER_THAN_EQUAL_TO'},
+            {label: '<',      value: 'LESSER_THAN'},
+            {label: '<=',      value: 'LESSER_THAN_EQUAL_TO'},
+            {label: '==',      value: 'EQUAL_TO'},
+            {label: 'pow',      value: 'POWER'},
+            {label: 'log',      value: 'LOGARITHM'},
+            {label: 'round',      value: 'ROUND'},
+            {label: 'abs',      value: 'ABSOLUTE'},
+            {label: 'e power',      value: 'EXPONENTIAL'},
+            {label: 'cosine',      value: 'COS'},
+            {label: 'sine',      value: 'SIN'},
+            {label: 'tan',      value: 'TAN'},
+            {label: 'ceil',      value: 'CEIL'},
+            {label: 'floor',      value: 'FLOOR'},
+            {label: 'sqrt',      value: 'SQRT'},
+            {label: 'variable',      value: 'VARIABLE'}
+        ];
         //$(".input-date#date1").datepicker();
         //$("#date2").datepicker();
 
@@ -155,7 +178,11 @@
                             //AW: Selected types are repopulated from the retrieved statement
                             if(vm.statement != null) {
                                 vm.statementType = getType(vm.statementTypes, vm.statement.statementType);
-                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
+                                if(vm.statement.statementType === "NUMBER")
+                                    vm.numberOperation = getType(vm.numberOperations, vm.statement.numberStatement.operation);
+
+                                if(vm.statement.statementType === "STRING")
+                                    vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operation);
                             }
                         },
                         function(err) {
@@ -214,6 +241,8 @@
             // vm.dateStatement.dateOperation = vm.statement.dateStatement.dateOperation.label;
             vm.statement.statementType = vm.statementType.value;
 
+            if(vm.statement.statementType === "NUMBER")
+                vm.statement.numberStatement.operation = vm.numberOperation.value;
             //AW: Specific to String statements
             if(vm.statement.statementType === "STRING")
                 vm.statement.stringStatement.operationType = vm.stringOperation.value;
