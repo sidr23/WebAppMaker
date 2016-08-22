@@ -66,6 +66,11 @@
     <div ng-switch-when="Database">
         <ng-include src="'views/statement/statement-database.view.html'"></ng-include>
     </div>
+
+    <div ng-switch-when="Array">
+        <ng-include src="'views/statement/statement-array.view.html'"></ng-include>
+    </div>
+
 </div>
 
 <button ng-click="model.deleteStatement()" ng-hide="model.statementId == 'new'"

@@ -1,0 +1,40 @@
+<div class="hidden-xs">
+    <div class="form-group">
+
+
+        <label for="arrayOperation">What operation to do?</label>
+
+
+        <select name="arrayOperation"
+                ng-options="operation.label for operation in model.arrayOperations track by operation.label"
+                ng-model="model.arrayOperation" class="form-control" id="arrayOperation">
+        </select>
+    </div>
+
+    <div ng-switch="model.arrayOperation.label">
+        <div ng-switch-when="Concatenate">
+            <label for="arrayCreation">How do you wanna create an array?</label>
+
+            <select name="arrayCreation"
+            ng-options="separator.label for separator in model.arraySeparators track by separator.label"
+            ng-model="model.arraySeparator" class="form-control" id="arrayCreation">
+            </select>
+
+            <div ng-switch="model.arraySeparator.label">
+                <div ng-switch-when="New Line">
+                    <label for="newLineArray">Enter elements of the array, one per line</label>
+                    <textarea class="form-control"
+                              id="newLineArray" rows="7" ng-model="model.arrayElements">
+                    </textarea>
+                    <button class="btn btn-block btn-primary" ng-click="createInput">Create Array</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="hidden-sm hidden-md hidden-lg">
+
+</div>

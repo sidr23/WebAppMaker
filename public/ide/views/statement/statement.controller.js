@@ -29,7 +29,8 @@
             {label: 'If',       value: 'DECISION'},
             {label: 'Navigation'},
             {label: 'Date',     value: 'DATE'},
-            {label: 'Database', value: 'DATABASE'}
+            {label: 'Database', value: 'DATABASE'},
+            {label: 'Array', value: 'ARRAY'}
         ];
         vm.statementType = vm.statementTypes[0];
 
@@ -55,6 +56,45 @@
             {label: 'Create Date from selecting in calendar'},
             {label: 'Create Date by providing each parameter'}
         ];
+        
+        // Array Start
+
+        vm.arrayOperations = [
+            {label: 'Concatenate',    value: 'CONCAT'},
+            {label: 'Check if every element passes a function',  value: 'EVERY'},
+            {label: 'Fill entire array with the same element',       value: 'FILL'},
+            {label: 'Filter the array based on a function',      value: 'FILTER'},
+            {label: 'Find the first occurence of an element',      value: 'FIND'},
+            {label: 'Find the index of the first occurence of an element',      value: 'FINDINDEX'},
+            {label: 'Apply a function on each element',      value: 'FOREACH'},
+            {label: 'Find the index of an element',     value: 'INDEXOF'},
+            {label: 'Checks if input is an array',value: 'ISARRAY'},
+            {label: 'Joins the elements of an array with a specified seperator',value: 'JOIN'},
+            {label: 'Last Index Of',value: 'LASTINDEXOF'},
+            {label: 'Apply function on each element of the array o form a new one',value: 'MAP'},
+            {label: 'Extract the first element in the array',value: 'POP'},
+            {label: 'Add an element to the array',value: 'PUSH'},
+            {label: 'Reduce the whole array into a string',value: 'REDUCE'},
+            {label: 'Reduce the whole array into a string starting from the right',value: 'REDUCERIGHT'},
+            {label: 'Remove the first element and return it',value: 'SHIFT'},
+            {label: 'Extract a part of the array as a new array',value: 'SLICE'},
+            {label: 'Check if any element in the array passes a test',value: 'SOME'},
+            {label: 'Sort the array',value: 'SORT'},
+            {label: 'Add/remove element from the array',value: 'SPLICE'},
+            {label: 'Convert array into a string',value: 'TOSTRING'},
+            {label: 'Add new elements to the array and return the new length',value: 'UNSHIFT'},
+            {label: 'Primitive value of the array',value: 'VALUEOF'},
+        ];
+
+        vm.arrayOperation = vm.arrayOperations[0];
+
+        vm.arraySeparators = [
+            {label: 'New Line'},
+            {label: 'Comma'},
+            {label: 'Hyphen'}
+        ];
+
+        vm.arraySeparator = vm.arraySeparators[0];
 
         vm.collections = [
             {label: 'Collection 1'},
