@@ -11,7 +11,6 @@ module.exports = function() {
         string3       : Object,
         index         : Object,
         length        : Object,
-        output        : String,
         count         : Object
     });
 
