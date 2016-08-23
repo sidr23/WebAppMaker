@@ -48,12 +48,16 @@
         vm.databaseOperation = vm.databaseOperations[0];
 
         vm.dateOperations = [
-            {label: 'Add'},
-            {label: 'Subtract'},
-            {label: 'Create Date from String'},
-            {label: 'Create Date from milliseconds'},
-            {label: 'Create Date from selecting in calendar'},
-            {label: 'Create Date by providing each parameter'}
+            {label: 'New Date',                 value:'NEW_DATE'},
+            {label: 'Date From String',         value:'DATE_FROM_STRING'},
+            {label: 'Date From Milliseconds',   value:'DATE_FROM_MILLISECONDS'},
+            {label: 'Date From Parameters',     value:'DATE_FROM_PARAMETERS'},
+            {label: 'Add',                      value:'ADD'},
+            {label: 'Subtract',                 value:'SUBTRACT'},
+            {label: 'Add Dates',                value:'ADD_DATES'},
+            {label: 'Subtract Dates',           value:'SUBTRACT_DATES'},
+            {label: 'To UTC Format',            value:'TO_UTC_FORMAT'},
+            {label: 'To Local Format',          value:'TO_LOCAL_FORMAT'}
         ];
 
         vm.collections = [

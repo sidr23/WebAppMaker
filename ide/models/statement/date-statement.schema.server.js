@@ -3,7 +3,7 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var DateStatementSchema = mongoose.Schema({
-        dateOperation : {
+        operation : {
             label: {
                 type : String,
                 enum : [
@@ -34,7 +34,7 @@ module.exports = function() {
         operand              : Object,
         operand1             : Object,
         operand2             : Object,
-        resultDateOperation  : String
+        result               : Object
     });
 
     return DateStatementSchema;
