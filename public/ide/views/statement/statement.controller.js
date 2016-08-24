@@ -4,6 +4,7 @@
         .module("WebAppMakerApp")
         .controller("EditStatementController", EditStatementController);
 
+
     // controller for the statement editor
     function EditStatementController($routeParams, PageService, ScriptService, WidgetService, StatementService, $location, $scope) {
 
@@ -164,7 +165,7 @@
                             //AW: Selected types are repopulated from the retrieved statement
                             if(vm.statement != null) {
                                 vm.statementType = getType(vm.statementTypes, vm.statement.statementType);
-                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
+                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operation);
                             }
                         },
                         function(err) {
@@ -225,7 +226,7 @@
 
             //AW: Specific to String statements
             if(vm.statement.statementType === "STRING")
-                vm.statement.stringStatement.operationType = vm.stringOperation.value;
+                vm.statement.stringStatement.operation = vm.stringOperation.value;
 
             if (vm.statementType.label === "If")
                 vm.statement.ifStatement.comparator = vm.statement.ifStatement.comparator.label;
@@ -247,7 +248,6 @@
                     }
                 );
         }
-
     }
 
     function ChooseStatementController($routeParams, ScriptService, $location) {
@@ -280,4 +280,7 @@
                 );
         }
     }
+
+
+
 })();

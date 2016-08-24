@@ -13,15 +13,18 @@
     <div class="form-group">
         <label for="stringString">String</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringString">
+            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="stringString">
             <div class="input-group-btn">
-                <button type="button"
+                    <button type="button"
                         class="btn btn-default dropdown-toggle"
                         data-toggle="dropdown">
                     <span class="caret"></span>
-                </button>
+                    </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name" >
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -32,7 +35,7 @@
         <div class="form-group">
             <label for="stringIndex">Start</label>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="stringIndex">
+                <input ng-model="model.statement.stringStatement.index.variable" type="text" class="form-control" id="stringIndex">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
@@ -40,9 +43,11 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
-                            <a>{{widget.name}}</a>
+                        <li class="wam-literal">
+                            <a>Literal</a>
                         </li>
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
+                            <a>{{widget.name}}</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,7 +57,7 @@
         <div class="form-group">
             <label for="stringLenght">Length</label>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.length" type="text" class="form-control" id="stringLenght">
+                <input ng-model="model.statement.stringStatement.length.variable" type="text" class="form-control" id="stringLenght">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
@@ -60,7 +65,10 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -92,9 +100,31 @@
 <!--Substr Operation-->
 <div ng-show="model.stringOperation.label==='Substr'">
     <div class="form-group">
-        <label for="stringStringInput">String</label>
+    <label for="stringsubstr">String</label>
+    <div class="input-group">
+        <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="stringsubstr">
+        <div class="input-group-btn">
+            <button type="button"
+                    class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown">
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right wam-left">
+                <li class="wam-literal">
+                    <a>Literal</a>
+                </li>
+                <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name" >
+                    <a>{{widget.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div ng-show="model.statement.stringStatement.string1">
+    <div class="form-group">
+        <label for="subStringIndex">Start</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringStringInput">
+            <input ng-model="model.statement.stringStatement.index.variable" type="text" class="form-control" id="subStringIndex">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
@@ -102,80 +132,44 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
+                        <a>{{widget.name}}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-show="model.statement.stringStatement.index">
+    <div class="form-group">
+        <label for="subStringLenght">Length</label>
+        <div class="input-group">
+            <input ng-model="model.statement.stringStatement.length.variable" type="text" class="form-control" id="subStringLenght">
+            <div class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
-    <div ng-show="model.statement.stringStatement.string1">
-        <div class="form-group">
-            <label for="stringIndexStartPosition">Start</label>
-            <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="stringIndexStartPosition">
-                <div class="input-group-btn">
-                    <button type="button"
-                            class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
-                            <a>{{widget.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ng-show="model.statement.stringStatement.index">
-        <div class="form-group">
-            <label for="stringIndexEndPosition">Length</label>
-            <div class="input-group">
-                <input ng-model="model.statement.stringStatement.length" type="text" class="form-control" id="stringIndexEndPosition">
-                <div class="input-group-btn">
-                    <button type="button"
-                            class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
-                            <a>{{widget.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div ng-show="model.statement.stringStatement.length">
-        <div class="form-group">
-            <label for="stringSubstrOutput">Output</label>
-            <div class="input-group">
-                <input ng-model="model.statement.output" type="text" class="form-control" id="stringSubstrOutput">
-                <div class="input-group-btn">
-                    <button type="button"
-                            class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.output = widget.name">
-                            <a>{{widget.name}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
-<!--Concatenate Operation-->
-<div ng-show="model.stringOperation.label==='Concatenate'">
+<div ng-show="model.statement.stringStatement.length">
     <div class="form-group">
-        <label for="stringFirstString">First String</label>
+        <label for="subStringOutput">Output</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringFirstString">
+            <input ng-model="model.statement.output" type="text" class="form-control" id="subStringOutput">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
@@ -183,7 +177,32 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.output = widget.name">
+                        <a>{{widget.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--Concatenate Operation-->
+<div ng-show="model.stringOperation.label==='Concatenate'">
+    <div class="form-group">
+        <label for="stringFirstString">First String</label>
+        <div class="input-group">
+            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="stringFirstString">
+            <div class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -194,7 +213,7 @@
         <div class="form-group">
             <label for="stringSecondString">Second String</label>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="stringSecondString">
+                <input ng-model="model.statement.stringStatement.string2.variable" type="text" class="form-control" id="stringSecondString">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
@@ -202,7 +221,10 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -236,7 +258,7 @@
     <div class="form-group">
         <label for="stringLenString">String</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringLenString">
+            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="stringLenString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
@@ -244,7 +266,10 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -278,7 +303,7 @@
     <div class="form-group">
         <label for="charString">String</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="charString">
+            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="charString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
@@ -286,7 +311,10 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -298,7 +326,7 @@
         <div class="form-group">
             <label for="charIndex">Index</label>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="charIndex">
+                <input ng-model="model.statement.stringStatement.index.variable" type="text" class="form-control" id="charIndex">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
@@ -306,7 +334,10 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -341,7 +372,7 @@
     <div class="form-group">
         <label for="charStringInput">String</label>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="charStringInput">
+            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="charStringInput">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
@@ -349,6 +380,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -369,6 +403,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -412,6 +449,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -431,6 +471,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -474,6 +517,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -493,6 +539,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -536,6 +585,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -555,6 +607,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -598,6 +653,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -617,6 +675,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -637,6 +698,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -680,6 +744,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -699,6 +766,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -719,6 +789,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -763,6 +836,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -782,6 +858,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.count = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -825,6 +904,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -844,6 +926,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -864,6 +949,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -907,6 +995,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -926,6 +1017,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -969,6 +1063,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -988,6 +1085,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -1031,6 +1131,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1050,6 +1153,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -1093,6 +1199,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1135,6 +1244,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1177,6 +1289,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1219,6 +1334,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1261,6 +1379,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1303,6 +1424,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1322,6 +1446,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
@@ -1365,6 +1492,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -1384,6 +1514,9 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
+                        <li class="wam-literal">
+                            <a>Literal</a>
+                        </li>
                         <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
