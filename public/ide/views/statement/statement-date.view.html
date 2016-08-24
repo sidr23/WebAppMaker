@@ -9,7 +9,7 @@
 </div>
 
 <div ng-show="model.statement.dateStatement.dateOperation!=undefined &&
-(model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract')">
+(model.statement.dateStatement.dateOperation.value==='ADD' || model.statement.dateStatement.dateOperation.value==='SUBTRACT')">
     <div class="form-group">
         <label for="dateSelectType">Select a variable or from calender or per digits</label>
 
@@ -39,14 +39,14 @@
     </div>
 </div>
 
-<div ng-if="(model.statement.dateStatement.dateOperation.label ==='Create Date from milliseconds')"
+<div ng-if="(model.statement.dateStatement.dateOperation.value === 'DATE_FROM_MILLISECONDS')"
      class="alert alert-info">
     Provide milliseconds since January 1, 1970
 </div>
 
 <div ng-show="model.statement.dateStatement.dateOperation!=undefined &&
-(model.statement.dateStatement.dateOperation.label==='Create Date from String' ||
-model.statement.dateStatement.dateOperation.label==='Create Date from milliseconds')">
+(model.statement.dateStatement.dateOperation.value === 'DATE_FROM_STRING' ||
+model.statement.dateStatement.dateOperation.value === 'DATE_FROM_MILLISECONDS')">
     <div class="form-group">
         <label for="dateVar">Select a variable or provide input</label>
 
@@ -70,7 +70,7 @@ model.statement.dateStatement.dateOperation.label==='Create Date from millisecon
     </div>
 </div>
 
-<div ng-show="model.statement.dateStatement.dateOperation.label==='Create Date by providing each parameter'">
+<div ng-show="model.statement.dateStatement.dateOperation.value === 'DATE_FROM_PARAMETERS'">
     <div class="row">
 
         <div class="col-sm-2">
@@ -247,7 +247,7 @@ model.statement.dateStatement.dateOperation.label==='Create Date from millisecon
 </div>
 
 <div ng-show="model.statement.dateStatement.dateOperand1==='Pick Date' ||
-model.statement.dateStatement.dateOperation.label==='Create Date from selecting in calendar'" class="input-date">
+model.statement.dateStatement.dateOperation.value==='Create Date from selecting in calendar'" class="input-date">
     Pick a date
     <div class="form-group">
         <div class="input-group date" pick-date-time ng-model="model.statement.dateStatement.pickedDate1">
@@ -261,7 +261,7 @@ model.statement.dateStatement.dateOperation.label==='Create Date from selecting 
 </div>
 
 <div ng-show="(model.statement.dateStatement.dateOperand1==='Per single digit' &&
-(model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract'))">
+(model.statement.dateStatement.dateOperation.value==='ADD' || model.statement.dateStatement.dateOperation.value==='SUBTRACT'))">
     What Time/Date have to be calculated
     <div class="row">
 
@@ -402,7 +402,7 @@ model.statement.dateStatement.dateOperation.label==='Create Date from selecting 
 </div>
 
 <div ng-show="(model.statement.dateStatement.dateOperand1!=undefined &&
-(model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract') &&
+(model.statement.dateStatement.dateOperation.value==='ADD' || model.statement.dateStatement.dateOperation.value==='SUBTRACT') &&
 model.statement.dateStatement.dateOperand1!='Per single digit' && model.statement.dateStatement.dateOperand1!='Pick Date') ||
 (model.statement.dateStatement.dateOperand1==='Pick Date' && model.statement.dateStatement.pickedDate1!='') ||
 (model.statement.dateStatement.dateOperand1==='Per single digit' && model.statement.dateStatement.operand1Seconds!=undefined &&
@@ -410,10 +410,10 @@ model.statement.dateStatement.operand1Minutes!=undefined && model.statement.date
 model.statement.dateStatement.operand1Date!=undefined && model.statement.dateStatement.operand1Month!=undefined &&
 model.statement.dateStatement.operand1Year!=undefined)">
     What Days/Time to be
-    <span ng-show="model.statement.dateStatement.dateOperation.label ==='Add'">
+    <span ng-show="model.statement.dateStatement.dateOperation.value ==='ADD'">
         Added
     </span>
-    <span ng-show="model.statement.dateStatement.dateOperation.label ==='Subtract'">
+    <span ng-show="model.statement.dateStatement.dateOperation.value ==='SUBTRACT'">
         Subtracted
     </span>
     <div class="row">
@@ -553,7 +553,7 @@ model.statement.dateStatement.operand1Year!=undefined)">
     </div>
 </div>
 
-<div ng-show="((model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract') &&
+<div ng-show="((model.statement.dateStatement.dateOperation.value==='ADD' || model.statement.dateStatement.dateOperation.value==='SUBTRACT') &&
 (model.statement.dateStatement.operand2Seconds!=undefined ||
 model.statement.dateStatement.operand2Minutes!=undefined || model.statement.dateStatement.operand2Hours!=undefined ||
 model.statement.dateStatement.operand2Date!=undefined || model.statement.dateStatement.operand2Month!=undefined ||
