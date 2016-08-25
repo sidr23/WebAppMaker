@@ -114,7 +114,7 @@
 
             // widget routes
             .when ("/developer/:developerId/website/:websiteId/page/:pageId/widget", {
-                templateUrl: "views/widget/widget-landscape.view.html",
+                templateUrl: "views/widget/widget-list.view.html",
                 controller: "WidgetListController",
                 controllerAs: "model",
                 resolve: { loggedin: checkLoggedin }
