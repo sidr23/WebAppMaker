@@ -125,6 +125,7 @@
         // event handlers
         vm.saveStatement = saveStatement;
         vm.deleteStatement = deleteStatement;
+        vm.removeProperty = removeProperty;
 
         // retrieve statement on load
         function init() {
@@ -166,7 +167,6 @@
                                 if (vm.statement.statementType === 'DATE') {
                                     vm.dateOperation = getType(vm.dateOperations, vm.statement.dateStatement.operation);
                                 }
-                                console.log(vm.statement);
                             }
                         },
                         function(err) {
@@ -280,5 +280,9 @@
                     }
                 );
         }
+    }
+
+    function removeProperty(name) {
+        delete this.statement.dateStatement[name];
     }
 })();

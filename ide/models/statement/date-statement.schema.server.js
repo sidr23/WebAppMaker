@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 module.exports = function() {
 
-    var obj = require("./date-input-statement.schema.server")();
+    var DateObject = require("./date-input-statement.schema.server")();
 
     var DateStatementSchema = mongoose.Schema({
         operation: {
@@ -21,20 +21,20 @@ module.exports = function() {
             ]
         },
         dateString           : String,
-        year                 : obj,
-        month                : obj,
-        day                  : obj,
-        hours                : obj,
-        minutes              : obj,
-        seconds              : obj,
-        milliseconds         : obj,
-        date                 : obj,
-        value1               : obj,
-        value2               : obj,
-        operand              : obj,
-        operand1             : obj,
-        operand2             : obj,
-        result               : obj
+        year                 : DateObject,
+        month                : DateObject,
+        day                  : DateObject,
+        hours                : DateObject,
+        minutes              : DateObject,
+        seconds              : DateObject,
+        milliseconds         : DateObject,
+        date                 : DateObject,
+        value1               : DateObject,
+        value2               : DateObject,
+        operand              : DateObject,
+        operand1             : DateObject,
+        operand2             : DateObject,
+        result               : Object
     });
 
     return DateStatementSchema;

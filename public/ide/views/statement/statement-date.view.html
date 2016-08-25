@@ -13,7 +13,10 @@
 <div ng-show="model.statement.dateStatement.operation != undefined
 && model.statement.dateStatement.operation === 'NEW_DATE'">
     <div class="form-group">
-        <label for="dateVar">Select a variable or provide input</label> <span class="pull-right"><input type="checkbox" ng-model="operand1.type"/> Literal</span>
+        <label for="dateVar">Select a variable or provide input</label>
+        <span class="pull-right">
+            <input type="checkbox" ng-model="operand1.type" ng-click="model.removeProperty('operand1')"/> Literal
+        </span>
 
         <div class="input-group">
             <input ng-model="model.statement.dateStatement.operand1[operand1.type?'literal':'variable']"
@@ -26,10 +29,8 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1 = widget.name">
+                    <li ng-repeat="widget in model.widgets"
+                        ng-click="model.statement.dateStatement.operand1[operand1.type?'literal':'variable'] = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
