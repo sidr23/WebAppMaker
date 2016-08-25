@@ -3,22 +3,20 @@ var mongoose = require("mongoose");
 module.exports = function() {
 
     var DateStatementSchema = mongoose.Schema({
-        operation : {
-            label: {
-                type : String,
-                enum : [
-                    "NEW_DATE",
-                    "DATE_FROM_STRING",
-                    "DATE_FROM_MILLISECONDS",
-                    "DATE_FROM_PARAMETERS",
-                    "ADD",
-                    "SUBTRACT",
-                    "ADD_DATES",
-                    "SUBTRACT_DATES",
-                    "TO_UTC_FORMAT",
-                    "TO_LOCAL_FORMAT"
-                ]
-            }
+        operation: {
+            type: String,
+            enum: [
+                "NEW_DATE",
+                "DATE_FROM_STRING",
+                "DATE_FROM_MILLISECONDS",
+                "DATE_FROM_PARAMETERS",
+                "ADD",
+                "SUBTRACT",
+                "ADD_DATES",
+                "SUBTRACT_DATES",
+                "TO_UTC_FORMAT",
+                "TO_LOCAL_FORMAT"
+            ]
         },
         dateString           : String,
         year                 : Object,

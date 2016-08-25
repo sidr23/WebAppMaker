@@ -159,7 +159,14 @@
                             //AW: Selected types are repopulated from the retrieved statement
                             if(vm.statement != null) {
                                 vm.statementType = getType(vm.statementTypes, vm.statement.statementType);
-                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
+
+                                if (vm.statementType === 'STRING')
+                                    vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
+
+                                if (vm.statement.statementType === 'DATE') {
+                                    vm.dateOperation = getType(vm.dateOperations, vm.statement.dateStatement.operation);
+                                }
+                                console.log(vm.statement);
                             }
                         },
                         function(err) {
@@ -224,7 +231,6 @@
 
             if (vm.statementType.label === "If")
                 vm.statement.ifStatement.comparator = vm.statement.ifStatement.comparator.label;
-
 
             /*if (vm.statementType.label === "Boolean"){
              if(vm.statement.booleanStatement.input1 === 'NOT'){
