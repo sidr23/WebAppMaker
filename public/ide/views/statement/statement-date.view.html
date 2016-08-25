@@ -1,5 +1,3 @@
-{{model.statement.dateStatement}}
-
 <div class="form-group">
     <label for="dateOperation">What operation do you want to do?</label>
 
@@ -10,12 +8,12 @@
     </select>
 </div>
 
-<div ng-show="model.statement.dateStatement.operation != undefined
-&& model.statement.dateStatement.operation === 'NEW_DATE'">
+<div ng-show="model.statement.dateStatement.operation != undefined &&
+model.statement.dateStatement.operation === 'NEW_DATE'">
     <div class="form-group">
         <label for="dateVar">Select a variable or provide input</label>
         <span class="pull-right">
-            <input type="checkbox" ng-model="operand1.type" ng-click="model.removeProperty('operand1')"/> Literal
+            <input type="checkbox" ng-model="operand1.type" ng-click="model.removeProperty(['operand1'])"/> Literal
         </span>
 
         <div class="input-group">
@@ -39,19 +37,52 @@
     </div>
 </div>
 
-<div ng-if="(model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
+<div ng-if="(model.statement.dateStatement.operation === 'DATE_FROM_MILLISECONDS')"
      class="alert alert-info">
     Provide milliseconds since January 1, 1970
 </div>
 
-<div ng-show="model.statement.dateStatement.dateOperation != undefined &&
-(model.statement.dateStatement.dateOperation.label === 'Date From String' ||
-model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')">
+
+<div ng-show="model.statement.dateStatement.operation != undefined &&
+model.statement.dateStatement.operation === 'DATE_FROM_MILLISECONDS'">
     <div class="form-group">
         <label for="dateVar">Select a variable or provide input</label>
+        <span class="pull-right">
+            <input type="checkbox" ng-model="milliseconds.type" ng-click="model.removeProperty(['milliseconds'])"/> Literal
+        </span>
 
         <div class="input-group">
-            <input ng-model="model.statement.dateStatement.operand1"
+            <input ng-model="model.statement.dateStatement.milliseconds[milliseconds.type?'literal':'variable']"
+                   type="text"
+                   class="form-control" id="dateMs">
+            <div class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li ng-repeat="widget in model.widgets"
+                        ng-click="model.statement.dateStatement.milliseconds[milliseconds.type?'literal':'variable'] = widget.name">
+                        <a>{{widget.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-show="model.statement.dateStatement.operation != undefined &&
+model.statement.dateStatement.operation === 'DATE_FROM_STRING'">
+    <div class="form-group">
+        <label for="dateVar">Select a variable or provide input</label>
+        <span class="pull-right">
+            <input type="checkbox" ng-model="dateString.type" ng-click="model.removeProperty(['dateString'])"/> Literal
+        </span>
+
+        <div class="input-group">
+            <input ng-model="model.statement.dateStatement.dateString[dateString.type?'literal':'variable']"
                    type="text"
                    class="form-control" id="dateVar">
             <div class="input-group-btn">
@@ -61,7 +92,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1 = widget.name">
+                    <li ng-repeat="widget in model.widgets"
+                        ng-click="model.statement.dateStatement.dateString[dateString.type?'literal':'variable'] = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -71,45 +103,18 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
 </div>
 
 
-<div ng-show="model.statement.dateStatement.dateOperation != undefined &&
-(model.statement.dateStatement.dateOperation.label === 'Add' || model.statement.dateStatement.dateOperation.label === 'Subtract')">
-    <div class="form-group">
-        <label for="dateSelectType">Select a variable or from calender or per digits</label>
-
-        <div class="input-group">
-            <input ng-model="model.statement.dateStatement.operand1"
-                   type="text"
-                   class="form-control" id="dateSelectType">
-            <div class="input-group-btn">
-                <button type="button"
-                        class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
-                    <span class="caret"></span>
-                </button>
-                <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li ng-click="model.statement.dateStatement.operand1 = 'Per single digit'">
-                        <a>Per single digit</a>
-                    </li>
-                    <li ng-click="model.statement.dateStatement.operand1 = 'Pick Date'">
-                        <a>Pick Date</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1 = widget.name">
-                        <a>{{widget.name}}</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div ng-show="model.statement.dateStatement.dateOperation.label === 'Date From Parameters'">
+<div ng-show="model.statement.dateStatement.operation === 'DATE_FROM_PARAMETERS'">
     <div class="row">
 
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamYear">Year:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="year.type" ng-click="model.removeProperty(['year'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Year"
+                    <input ng-model="model.statement.dateStatement.year[year.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="Y" id="dateParamYear">
@@ -120,7 +125,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
-                            <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1Year = widget.name">
+                            <li ng-repeat="widget in model.widgets"
+                                ng-click="model.statement.dateStatement.year[year.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -132,8 +138,12 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamMonth">Month:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="month.type" ng-click="model.removeProperty(['month'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Month"
+                    <input ng-model="model.statement.dateStatement.month[month.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="M" id="dateParamMonth">
@@ -144,7 +154,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
-                            <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1Month = widget.name">
+                            <li ng-repeat="widget in model.widgets"
+                                ng-click="model.statement.dateStatement.month[month.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -156,8 +167,12 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamDay">Day:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="day.type" ng-click="model.removeProperty(['day'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Date"
+                    <input ng-model="model.statement.dateStatement.day[day.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="D" id="dateParamDay">
@@ -168,7 +183,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
-                            <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1Date = widget.name">
+                            <li ng-repeat="widget in model.widgets"
+                                ng-click="model.statement.dateStatement.day[day.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -180,8 +196,12 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamHours">Hours:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="hours.type" ng-click="model.removeProperty(['hours'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Hours"
+                    <input ng-model="model.statement.dateStatement.hours[hours.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="H" id="dateParamHours">
@@ -192,7 +212,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
-                            <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1Hours = widget.name">
+                            <li ng-repeat="widget in model.widgets"
+                                ng-click="model.statement.dateStatement.hours[hours.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -204,8 +225,12 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamMin">Minutes:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="minutes.type" ng-click="model.removeProperty(['minutes'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Minutes"
+                    <input ng-model="model.statement.dateStatement.minutes[minutes.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="M" id="dateParamMin">
@@ -216,7 +241,8 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
-                            <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1Minutes = widget.name">
+                            <li ng-repeat="widget in model.widgets"
+                                ng-click="model.statement.dateStatement.minutes[minutes.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -228,8 +254,12 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
         <div class="col-sm-2">
             <div class="form-group">
                 <label for="dateParamSeconds">Seconds:</label>
+                <span class="pull-right">
+                    <input type="checkbox" ng-model="seconds.type" ng-click="model.removeProperty(['seconds'])"/> Literal
+                </span>
+
                 <div class="input-group">
-                    <input ng-model="model.statement.dateStatement.operand1Seconds"
+                    <input ng-model="model.statement.dateStatement.seconds[seconds.type?'literal':'variable']"
                            type="text"
                            class="form-control"
                            placeholder="S" id="dateParamSeconds">
@@ -241,7 +271,7 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right wam-left">
                             <li ng-repeat="widget in model.widgets"
-                                ng-click="model.statement.dateStatement.operand1Seconds = widget.name">
+                                ng-click="model.statement.dateStatement.seconds[seconds.type?'literal':'variable'] = widget.name">
                                 <a>{{widget.name}}</a>
                             </li>
                         </ul>
@@ -250,7 +280,7 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
             </div>
         </div>
 
-        <div class="col-sm-2">
+        <div class="col-sm-2" ng-show="false">
             <div class="form-group">
                 <label for="dateParamMillisecons">Milliseconds:</label>
                 <div class="input-group">
@@ -278,22 +308,55 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
     </div>
 </div>
 
-<!--<div ng-show="model.statement.dateStatement.operand1 === 'Pick Date' ||-->
-<!--model.statement.dateStatement.dateOperation.label === 'Create Date From Calendar'" class="input-date">-->
-    <!--Pick a date-->
-    <!--<div class="form-group">-->
-        <!--<div class="input-group date" pick-date-time ng-model="model.statement.dateStatement.pickedDate1">-->
-            <!--<input type="string"-->
-                   <!--class="form-control"/>-->
-            <!--<span class="input-group-addon">-->
-                <!--<span class="glyphicon glyphicon-calendar"></span>-->
-            <!--</span>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
+
+
+<div ng-show="model.statement.dateStatement.operation != undefined &&
+(model.statement.dateStatement.operation === 'ADD' || model.statement.dateStatement.operation === 'SUBTRACT')">
+    <div class="form-group">
+        <label for="dateSelectType">Select a variable or pick a date from the calendar</label>
+
+        <div class="input-group">
+            <input ng-model="model.statement.dateStatement.operand[operand.type?'literal':'variable']"
+                   type="text"
+                   class="form-control" id="dateSelectType">
+
+            <div class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        ng-click="model.removeProperty(['operand', 'operand1'])"
+                        data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li ng-click="model.statement.dateStatement.operand1 = 'Select From Calendar'">
+                        <a>Select From Calendar</a>
+                    </li>
+                    <li ng-repeat="widget in model.widgets"
+                        ng-click="model.statement.dateStatement.operand[operand.type?'literal':'variable'] = widget.name">
+                        <a>{{widget.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="model.statement.dateStatement.operand1 === 'Select From Calendar' ||
+model.statement.dateStatement.operation === 'DATE_FROM_CALENDAR'" class="input-date">
+    Select a date
+    <div class="form-group">
+        <div class="input-group date" pick-date-time ng-model="model.statement.dateStatement.operand.literal">
+            <input type="string"
+                   class="form-control"/>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+</div>
 
 <div ng-show="(model.statement.dateStatement.operand1==='Per single digit' &&
-(model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract'))">
+(model.statement.dateStatement.operation === 'ADD' || model.statement.dateStatement.operation === 'SUBTRACT'))">
     What Time/Date have to be calculated
     <div class="row">
 
@@ -433,27 +496,24 @@ model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
     </div>
 </div>
 
-<div ng-show="(model.statement.dateStatement.operand1!=undefined &&
-(model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract') &&
-model.statement.dateStatement.operand1!='Per single digit' && model.statement.dateStatement.operand1!='Pick Date') ||
-(model.statement.dateStatement.operand1==='Pick Date' && model.statement.dateStatement.pickedDate1!='') ||
-(model.statement.dateStatement.operand1==='Per single digit' && model.statement.dateStatement.operand1Seconds!=undefined &&
-model.statement.dateStatement.operand1Minutes!=undefined && model.statement.dateStatement.operand1Hours!=undefined &&
-model.statement.dateStatement.operand1Date!=undefined && model.statement.dateStatement.operand1Month!=undefined &&
-model.statement.dateStatement.operand1Year!=undefined)">
+<div ng-show="((model.statement.dateStatement.operand != undefined || model.statement.dateStatement.operand1 != undefined) &&
+(model.statement.dateStatement.operation === 'ADD' || model.statement.dateStatement.operation === 'SUBTRACT'))">
     What Days/Time to be
-    <span ng-show="model.statement.dateStatement.dateOperation.label ==='Add'">
+    <span ng-show="model.statement.dateStatement.operation === 'ADD'">
         Added
     </span>
-    <span ng-show="model.statement.dateStatement.dateOperation.label ==='Subtract'">
+    <span ng-show="model.statement.dateStatement.operation === 'SUBTRACT'">
         Subtracted
     </span>
     <div class="row">
 
         <div class="col-sm-2">
             Years:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="years.type" ng-click="model.removeProperty(['years'])"/> Literal
+            </span>
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Year"
+                <input ng-model="model.statement.dateStatement.years[years.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="Y">
@@ -464,7 +524,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Year = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.years[years.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -474,8 +535,11 @@ model.statement.dateStatement.operand1Year!=undefined)">
 
         <div class="col-sm-2">
             Months:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="months.type" ng-click="model.removeProperty(['months'])"/> Literal
+            </span>
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Month"
+                <input ng-model="model.statement.dateStatement.months[months.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="M">
@@ -486,7 +550,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Month = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.months[months.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -496,8 +561,11 @@ model.statement.dateStatement.operand1Year!=undefined)">
 
         <div class="col-sm-2">
             Days:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="day.type" ng-click="model.removeProperty(['day'])"/> Literal
+            </span>
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Date"
+                <input ng-model="model.statement.dateStatement.day[day.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="D">
@@ -508,7 +576,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Date = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.day[day.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -518,8 +587,11 @@ model.statement.dateStatement.operand1Year!=undefined)">
 
         <div class="col-sm-2">
             Hours:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="hours.type" ng-click="model.removeProperty(['hours'])"/> Literal
+            </span>
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Hours"
+                <input ng-model="model.statement.dateStatement.hours[hours.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="H">
@@ -530,7 +602,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Hours = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.hours[hours.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -540,8 +613,12 @@ model.statement.dateStatement.operand1Year!=undefined)">
 
         <div class="col-sm-2">
             Minutes:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="minutes.type" ng-click="model.removeProperty(['minutes'])"/> Literal
+            </span>
+
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Minutes"
+                <input ng-model="model.statement.dateStatement.minutes[minutes.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="M">
@@ -552,7 +629,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Minutes = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.minutes[minutes.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -562,8 +640,12 @@ model.statement.dateStatement.operand1Year!=undefined)">
 
         <div class="col-sm-2">
             Seconds:
+            <span class="pull-right">
+                <input type="checkbox" ng-model="seconds.type" ng-click="model.removeProperty(['seconds'])"/> Literal
+            </span>
+
             <div class="input-group">
-                <input ng-model="model.statement.dateStatement.operand2Seconds"
+                <input ng-model="model.statement.dateStatement.seconds[seconds.type?'literal':'variable']"
                        type="text"
                        class="form-control"
                        placeholder="S">
@@ -574,7 +656,8 @@ model.statement.dateStatement.operand1Year!=undefined)">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand2Seconds = widget.name">
+                        <li ng-repeat="widget in model.widgets"
+                            ng-click="model.statement.dateStatement.seconds[seconds.type?'literal':'variable'] = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -585,12 +668,49 @@ model.statement.dateStatement.operand1Year!=undefined)">
     </div>
 </div>
 
-<div ng-show="((model.statement.dateStatement.dateOperation.label==='Add' || model.statement.dateStatement.dateOperation.label==='Subtract') &&
-(model.statement.dateStatement.operand2Seconds!=undefined ||
-model.statement.dateStatement.operand2Minutes!=undefined || model.statement.dateStatement.operand2Hours!=undefined ||
-model.statement.dateStatement.operand2Date!=undefined || model.statement.dateStatement.operand2Month!=undefined ||
-model.statement.dateStatement.operand2Year!=undefined)) ||
-(model.statement.dateStatement.operation === 'NEW_DATE' && model.statement.dateStatement.operand1 != undefined)">
+
+<div ng-show="model.statement.dateStatement.operation != undefined &&
+(model.statement.dateStatement.operation === 'TO_UTC_FORMAT' || model.statement.dateStatement.operation === 'TO_LOCAL_FORMAT')">
+    <div class="form-group">
+        <label for="dateVar">Select a variable or provide input</label>
+        <span class="pull-right">
+            <input type="checkbox" ng-model="operand.type" ng-click="model.removeProperty(['operand'])"/> Literal
+        </span>
+
+        <div class="input-group">
+            <input ng-model="model.statement.dateStatement.operand[operand.type?'literal':'variable']"
+                   type="text"
+                   class="form-control" id="dateUtc">
+            <div class="input-group-btn">
+                <button type="button"
+                        class="btn btn-default dropdown-toggle"
+                        ng-click="model.removeProperty(['operand'])"
+                        data-toggle="dropdown">
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li ng-repeat="widget in model.widgets"
+                        ng-click="model.statement.dateStatement.operand[operand.type?'literal':'variable'] = widget.name">
+                        <a>{{widget.name}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div ng-show="((model.statement.dateStatement.operation === 'ADD' || model.statement.dateStatement.operation === 'SUBTRACT') &&
+(model.statement.dateStatement.year != undefined ||
+model.statement.dateStatement.minutes != undefined ||
+model.statement.dateStatement.day != undefined)) ||
+(model.statement.dateStatement.operation === 'NEW_DATE' && model.statement.dateStatement.operand1 != undefined) ||
+(model.statement.dateStatement.operation === 'DATE_FROM_STRING' && model.statement.dateStatement.dateString != undefined) ||
+(model.statement.dateStatement.operation === 'DATE_FROM_MILLISECONDS' && model.statement.dateStatement.milliseconds != undefined) ||
+(model.statement.dateStatement.operation === 'DATE_FROM_PARAMETERS' &&
+(model.statement.dateStatement.year != undefined && model.statement.dateStatement.month != undefined &&
+model.statement.dateStatement.day != undefined && model.statement.dateStatement.hours != undefined &&
+model.statement.dateStatement.minutes != undefined && model.statement.dateStatement.seconds != undefined))">
 
     Save the result in
     <div class="input-group">

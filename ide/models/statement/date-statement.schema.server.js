@@ -20,7 +20,7 @@ module.exports = function() {
                 "TO_LOCAL_FORMAT"
             ]
         },
-        dateString           : String,
+        dateString           : DateObject,
         year                 : DateObject,
         month                : DateObject,
         day                  : DateObject,
@@ -34,6 +34,7 @@ module.exports = function() {
         operand              : DateObject,
         operand1             : DateObject,
         operand2             : DateObject,
+        locale               : DateObject,
         result               : Object
     });
 

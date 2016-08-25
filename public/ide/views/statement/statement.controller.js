@@ -54,8 +54,6 @@
             {label: 'Date From Parameters',     value:'DATE_FROM_PARAMETERS'},
             {label: 'Add',                      value:'ADD'},
             {label: 'Subtract',                 value:'SUBTRACT'},
-            {label: 'Add Dates',                value:'ADD_DATES'},
-            {label: 'Subtract Dates',           value:'SUBTRACT_DATES'},
             {label: 'To UTC Format',            value:'TO_UTC_FORMAT'},
             {label: 'To Local Format',          value:'TO_LOCAL_FORMAT'}
         ];
@@ -282,7 +280,9 @@
         }
     }
 
-    function removeProperty(name) {
-        delete this.statement.dateStatement[name];
+    function removeProperty(names) {
+        for (var n in names) {
+            delete this.statement.dateStatement[names[n]];
+        }
     }
 })();
