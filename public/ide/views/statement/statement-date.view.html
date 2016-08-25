@@ -10,13 +10,13 @@
     </select>
 </div>
 
-<div ng-show="model.statement.dateStatement.dateOperation != undefined
-&& model.statement.dateStatement.dateOperation.label === 'New Date'">
+<div ng-show="model.statement.dateStatement.operation != undefined
+&& model.statement.dateStatement.operation === 'NEW_DATE'">
     <div class="form-group">
-        <label for="dateVar">Select a variable or provide input</label>
+        <label for="dateVar">Select a variable or provide input</label> <span class="pull-right"><input type="checkbox" ng-model="operand1.type"/> Literal</span>
 
         <div class="input-group">
-            <input ng-model="model.statement.dateStatement.operand1"
+            <input ng-model="model.statement.dateStatement.operand1[operand1.type?'literal':'variable']"
                    type="text"
                    class="form-control" id="newDate">
             <div class="input-group-btn">
@@ -26,6 +26,9 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
+                    <li class="wam-literal">
+                        <a>Literal</a>
+                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.dateStatement.operand1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -34,7 +37,6 @@
         </div>
     </div>
 </div>
-
 
 <div ng-if="(model.statement.dateStatement.dateOperation.label === 'Date From Milliseconds')"
      class="alert alert-info">
@@ -587,7 +589,7 @@ model.statement.dateStatement.operand1Year!=undefined)">
 model.statement.dateStatement.operand2Minutes!=undefined || model.statement.dateStatement.operand2Hours!=undefined ||
 model.statement.dateStatement.operand2Date!=undefined || model.statement.dateStatement.operand2Month!=undefined ||
 model.statement.dateStatement.operand2Year!=undefined)) ||
-model.statement.dateStatement.dateOperation.label==='New Date'">
+(model.statement.dateStatement.operation === 'NEW_DATE' && model.statement.dateStatement.operand1 != undefined)">
 
     Save the result in
     <div class="input-group">
