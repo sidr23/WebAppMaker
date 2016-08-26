@@ -1,6 +1,9 @@
+var webshot = require("webshot");
+
 module.exports = function (app, model) {
 
     var pageModel   = model.pageModel;
+    var websiteModel = model.websiteModel;
 
     app.post   ("/api/website/:websiteId/page", createPage);
     app.get    ("/api/website/:websiteId/page", findPagesForWebsite);
@@ -48,6 +51,14 @@ module.exports = function (app, model) {
         var websiteId = req.params.websiteId;
         var pageId = req.params.pageId;
         var page = req.body;
+
+        var user = req.user;
+
+        var url = "http://127.0.0.1:3000/ide/#/developer/"+user._id+"/website/"+page._website+"/page/"+pageId;
+        var path = "public/thumbnails/"+user._id+"/"+page._website+"/"+pageId+".png";
+        
+        saveScreenshot(req, url, path);
+        
         pageModel
             .updatePage(pageId, page)
             .then(
@@ -118,4 +129,25 @@ module.exports = function (app, model) {
                 }
             );
     }
-}
+
+    function saveScreenshot(req, url, path) {
+        var options = {
+            renderDelay: !req.query.delay ? 100 : req.query.delay,
+            phantomConfig: {
+                'ignore-ssl-errors': 'true',
+                'local-to-remote-url-access': 'true',
+                'web-security': 'false'
+            },
+            headers: req.headers,
+            cookies: req.cookies,
+            sessionID: req.sessionID,
+            session: req.session,
+            quality: 50
+        };
+
+        webshot(url, path, options, function(err) {
+
+        });
+    }
+
+};
