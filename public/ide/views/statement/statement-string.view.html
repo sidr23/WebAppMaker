@@ -17,14 +17,11 @@
             <div class="input-group-btn">
                     <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                     </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name" >
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name" >
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -39,14 +36,11 @@
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="index.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                             <a>{{widget.name}}</a></li>
                     </ul>
                 </div>
@@ -55,20 +49,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.index">
         <div class="form-group">
-            <label for="stringLenght">Length</label>
+            <label for="stringLenght">Length</label><span class="pull-right"><input type="checkbox" ng-model="length.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.length" type="text" class="form-control" id="stringLenght">
+                <input ng-model="model.statement.stringStatement.length[length.type?'literal':'variable']" type="text" class="form-control" id="stringLenght">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="length.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -100,20 +91,17 @@
 <!--Substr Operation-->
 <div ng-show="model.stringOperation.label==='Substr'">
     <div class="form-group">
-    <label for="stringsubstr">String</label>
+    <label for="stringsubstr">String</label><span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
     <div class="input-group">
-        <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringsubstr">
+        <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="stringsubstr">
         <div class="input-group-btn">
             <button type="button"
                     class="btn btn-default dropdown-toggle"
-                    data-toggle="dropdown">
+                    data-toggle="dropdown" ng-disabled="string1.type">
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right wam-left">
-                <li class="wam-literal">
-                    <a>Literal</a>
-                </li>
-                <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name" >
+                <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name" >
                     <a>{{widget.name}}</a>
                 </li>
             </ul>
@@ -122,20 +110,17 @@
 </div>
 <div ng-show="model.statement.stringStatement.string1">
     <div class="form-group">
-        <label for="subStringIndex">Start</label>
+        <label for="subStringIndex">Start</label><span class="pull-right"><input type="checkbox" ng-model="index.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="subStringIndex">
+            <input ng-model="model.statement.stringStatement.index[index.type?'literal':'variable']" type="text" class="form-control" id="subStringIndex">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="index.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                         <a>{{widget.name}}</a></li>
                 </ul>
             </div>
@@ -144,20 +129,17 @@
 </div>
 <div ng-show="model.statement.stringStatement.index">
     <div class="form-group">
-        <label for="subStringLenght">Length</label>
+        <label for="subStringLenght">Length</label> <span class="pull-right"><input type="checkbox" ng-model="length.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.length" type="text" class="form-control" id="subStringLenght">
+            <input ng-model="model.statement.stringStatement.length[length.type?'literal':'variable']" type="text" class="form-control" id="subStringLenght">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="length.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -189,20 +171,17 @@
 <!--Concatenate Operation-->
 <div ng-show="model.stringOperation.label==='Concatenate'">
     <div class="form-group">
-        <label for="stringFirstString">First String</label>
+        <label for="stringFirstString">First String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringFirstString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="stringFirstString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -211,20 +190,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="stringSecondString">Second String</label>
+            <label for="stringSecondString">Second String</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="stringSecondString">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="stringSecondString">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -256,19 +232,16 @@
 <!--Length Operation-->
 <div ng-show="model.stringOperation.label==='Length'">
     <div class="form-group">
-        <label for="stringLenString">String</label>
+        <label for="stringLenString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringLenString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="stringLenString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
                     <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
@@ -301,20 +274,17 @@
 <!--"Char At" Operation-->
 <div ng-show="model.stringOperation.label==='Char At'">
     <div class="form-group">
-        <label for="charString">String</label>
+        <label for="charString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="charString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="charString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -324,20 +294,17 @@
 
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="charIndex">Index</label>
+            <label for="charIndex">Index</label> <span class="pull-right"><input type="checkbox" ng-model="index.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="charIndex">
+                <input ng-model="model.statement.stringStatement.index[index.type?'literal':'variable']" type="text" class="form-control" id="charIndex">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="index.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -370,20 +337,17 @@
 <!--"Char Code Of" Operation-->
 <div ng-show="model.stringOperation.label==='Char Code Of'">
     <div class="form-group">
-        <label for="charStringInput">String</label>
+        <label for="charStringInput">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1.variable" type="text" class="form-control" id="charStringInput">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="charStringInput">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable = widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -393,20 +357,17 @@
 
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="charIndexPosition">Index</label>
+            <label for="charIndexPosition">Index</label> <span class="pull-right"><input type="checkbox" ng-model="index.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="charIndexPosition">
+                <input ng-model="model.statement.stringStatement.index[index.type?'literal':'variable']" type="text" class="form-control" id="charIndexPosition">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="index.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -439,20 +400,17 @@
 <!--"Index Of" Operation-->
 <div ng-show="model.stringOperation.label==='Index Of'">
     <div class="form-group">
-        <label for="indexString">String 1</label>
+        <label for="indexString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="indexString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="indexString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -461,20 +419,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="indexSearch">String 2</label>
+            <label for="indexSearch">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="indexSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="indexSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -507,20 +462,17 @@
 <!--"Last Index Of" Operation-->
 <div ng-show="model.stringOperation.label==='Last Index Of'">
     <div class="form-group">
-        <label for="lastIndexString">String 1</label>
+        <label for="lastIndexString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="lastIndexString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="lastIndexString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -529,20 +481,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="lastIndexSearch">String 2</label>
+            <label for="lastIndexSearch">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="lastIndexSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="lastIndexSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -575,20 +524,17 @@
 <!--"Search" Operation-->
 <div ng-show="model.stringOperation.label==='Search'">
     <div class="form-group">
-        <label for="lastIndexString">String 1</label>
+        <label for="lastIndexString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -597,20 +543,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="lastIndexSearch">String 2</label>
+            <label for="lastIndexSearch">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -643,20 +586,17 @@
 <!--"Replace" Operation-->
 <div ng-show="model.stringOperation.label==='Replace'">
     <div class="form-group">
-        <label for="replaceString">String 1</label>
+        <label for="replaceString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="replaceString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="replaceString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -665,20 +605,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="replaceSearch">String to be Replaced</label>
+            <label for="replaceSearch">String to be Replaced</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="replaceSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="replaceSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -688,20 +625,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string2">
         <div class="form-group">
-            <label for="replaceReplace">Value to be Replaced</label>
+            <label for="replaceReplace">Value to be Replaced</label> <span class="pull-right"><input type="checkbox" ng-model="string3 .type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string3" type="text" class="form-control" id="replaceReplace">
+                <input ng-model="model.statement.stringStatement.string3[string3.type?'literal':'variable']" type="text" class="form-control" id="replaceReplace">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string3.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -734,20 +668,17 @@
 <!--"ReplaceAll" Operation-->
 <div ng-show="model.stringOperation.label==='Replace All'">
     <div class="form-group">
-        <label for="replaceAllString">String 1</label>
+        <label for="replaceAllString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="replaceAllString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="replaceAllString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -756,20 +687,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="replaceAllSearch">String to be Replaced</label>
+            <label for="replaceAllSearch">String to be Replaced</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="replaceAllSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="replaceAllSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -779,20 +707,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string2">
         <div class="form-group">
-            <label for="replaceAllReplace">Value to be Replaced</label>
+            <label for="replaceAllReplace">Value to be Replaced</label> <span class="pull-right"><input type="checkbox" ng-model="string3.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string3" type="text" class="form-control" id="replaceAllReplace">
+                <input ng-model="model.statement.stringStatement.string3[string3.type?'literal':'variable']" type="text" class="form-control" id="replaceAllReplace">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string3.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string3.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -826,20 +751,17 @@
 <!--"Repeat" Operation-->
 <div ng-show="model.stringOperation.label==='Repeat'">
     <div class="form-group">
-        <label for="repeatString">String</label>
+        <label for="repeatString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="repeatString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="repeatString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -848,20 +770,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="repeatCount">Count</label>
+            <label for="repeatCount">Count</label> <span class="pull-right"><input type="checkbox" ng-model="count.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.count" type="text" class="form-control" id="repeatCount">
+                <input ng-model="model.statement.stringStatement.count[count.type?'literal':'variable']" type="text" class="form-control" id="repeatCount">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="count.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.count = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.count.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -894,20 +813,17 @@
 <!--Slice Operation-->
 <div ng-show="model.stringOperation.label==='Slice'">
     <div class="form-group">
-        <label for="stringStringSlice">String</label>
+        <label for="stringStringSlice">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="stringStringSlice">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="stringStringSlice">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -916,20 +832,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="stringStartPos">Start</label>
+            <label for="stringStartPos">Start</label> <span class="pull-right"><input type="checkbox" ng-model="index.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.index" type="text" class="form-control" id="stringStartPos">
+                <input ng-model="model.statement.stringStatement.index[index.type?'literal':'variable']" type="text" class="form-control" id="stringStartPos">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="index.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.index.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -939,20 +852,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.index">
         <div class="form-group">
-            <label for="stringEndPos">Length</label>
+            <label for="stringEndPos">Length</label> <span class="pull-right"><input type="checkbox" ng-model="length.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.length" type="text" class="form-control" id="stringEndPos">
+                <input ng-model="model.statement.stringStatement.length[length.type?'literal':'variable']" type="text" class="form-control" id="stringEndPos">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="length.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.length.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -985,20 +895,17 @@
 <!--"Match" Operation-->
 <div ng-show="model.stringOperation.label==='Match'">
     <div class="form-group">
-        <label for="matchString">String 1</label>
+        <label for="matchString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="matchString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="matchString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1007,20 +914,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="matchInput">String 2</label>
+            <label for="matchInput">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="matchInput">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="matchInput">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -1053,20 +957,17 @@
 <!--"Split" Operation-->
 <div ng-show="model.stringOperation.label==='Split'">
     <div class="form-group">
-        <label for="splitString">String 1</label>
+        <label for="splitString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="splitString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="splitString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1075,20 +976,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="splitInput">String 2</label>
+            <label for="splitInput">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="splitInput">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="splitInput">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -1121,20 +1019,17 @@
 <!--"Locale Compare" Operation-->
 <div ng-show="model.stringOperation.label==='Locale Compare'">
     <div class="form-group">
-        <label for="localeCompString">String 1</label>
+        <label for="localeCompString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="localeCompString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="localeCompString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1143,20 +1038,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="localCompPosition">String 2</label>
+            <label for="localCompPosition">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="localCompPosition">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="localCompPosition">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -1189,20 +1081,17 @@
 <!--To Lowercase Operation-->
 <div ng-show="model.stringOperation.label==='Lowercase'">
     <div class="form-group">
-        <label for="lowerCaseString">String</label>
+        <label for="lowerCaseString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="lowerCaseString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="lowerCaseString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1234,20 +1123,17 @@
 <!--To Locale Lowercase Operation-->
 <div ng-show="model.stringOperation.label==='Locale Lowercase'">
     <div class="form-group">
-        <label for="localeLowerCaseString">String</label>
+        <label for="localeLowerCaseString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="localeLowerCaseString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="localeLowerCaseString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1279,20 +1165,17 @@
 <!--To Uppercase Operation-->
 <div ng-show="model.stringOperation.label==='Uppercase'">
     <div class="form-group">
-        <label for="upperCaseString">String</label>
+        <label for="upperCaseString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="upperCaseString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="upperCaseString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1324,20 +1207,17 @@
 <!--To Locale Uppercase Operation-->
 <div ng-show="model.stringOperation.label==='Locale Uppercase'">
     <div class="form-group">
-        <label for="localeUpperCaseString">String</label>
+        <label for="localeUpperCaseString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="localeUpperCaseString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="localeUpperCaseString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1369,20 +1249,17 @@
 <!--Trim Operation-->
 <div ng-show="model.stringOperation.label==='Trim'">
     <div class="form-group">
-        <label for="trimString">String</label>
+        <label for="trimString">String</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="trimString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="trimString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1414,20 +1291,17 @@
 <!--"Starts With" Operation-->
 <div ng-show="model.stringOperation.label==='Starts With'">
     <div class="form-group">
-        <label for="startString">String 1</label>
+        <label for="startString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="startString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="startString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1436,20 +1310,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="startSearch">String 2</label>
+            <label for="startSearch">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="startSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="startSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable= widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
@@ -1482,20 +1353,17 @@
 <!--"Ends With" Operation-->
 <div ng-show="model.stringOperation.label==='Ends With'">
     <div class="form-group">
-        <label for="endsString">String 1</label>
+        <label for="endsString">String 1</label> <span class="pull-right"><input type="checkbox" ng-model="string1.type"/> Literal</span>
         <div class="input-group">
-            <input ng-model="model.statement.stringStatement.string1" type="text" class="form-control" id="endsString">
+            <input ng-model="model.statement.stringStatement.string1[string1.type?'literal':'variable']" type="text" class="form-control" id="endsString">
             <div class="input-group-btn">
                 <button type="button"
                         class="btn btn-default dropdown-toggle"
-                        data-toggle="dropdown">
+                        data-toggle="dropdown" ng-disabled="string1.type">
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-right wam-left">
-                    <li class="wam-literal">
-                        <a>Literal</a>
-                    </li>
-                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1 = widget.name">
+                    <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string1.variable= widget.name">
                         <a>{{widget.name}}</a>
                     </li>
                 </ul>
@@ -1504,20 +1372,17 @@
     </div>
     <div ng-show="model.statement.stringStatement.string1">
         <div class="form-group">
-            <label for="endsSearch">String 2</label>
+            <label for="endsSearch">String 2</label> <span class="pull-right"><input type="checkbox" ng-model="string2.type"/> Literal</span>
             <div class="input-group">
-                <input ng-model="model.statement.stringStatement.string2" type="text" class="form-control" id="endsSearch">
+                <input ng-model="model.statement.stringStatement.string2[string2.type?'literal':'variable']" type="text" class="form-control" id="endsSearch">
                 <div class="input-group-btn">
                     <button type="button"
                             class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
+                            data-toggle="dropdown" ng-disabled="string2.type">
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-right wam-left">
-                        <li class="wam-literal">
-                            <a>Literal</a>
-                        </li>
-                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2 = widget.name">
+                        <li ng-repeat="widget in model.widgets" ng-click="model.statement.stringStatement.string2.variable = widget.name">
                             <a>{{widget.name}}</a>
                         </li>
                     </ul>
