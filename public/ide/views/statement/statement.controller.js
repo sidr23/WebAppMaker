@@ -4,6 +4,7 @@
         .module("WebAppMakerApp")
         .controller("EditStatementController", EditStatementController);
 
+
     // controller for the statement editor
     function EditStatementController($routeParams, PageService, ScriptService, WidgetService, StatementService, $location, $scope) {
 
@@ -93,17 +94,26 @@
 
         vm.stringOperations = [
             {label: 'Substring',    value: 'SUBSTRING'},
+            {label: 'Substr',    value: 'SUBSTR'},
             {label: 'Concatenate',  value: 'CONCATENATE'},
             {label: 'Length',       value: 'LENGTH'},
             {label: 'Char At',      value: 'CHARAT'},
+            {label: 'Char Code Of',      value: 'CHARCODEOF'},
             {label: 'Index Of',     value: 'INDEXOF'},
             {label: 'Last Index Of',value: 'LASTINDEXOF'},
             {label: 'Search',       value: 'SEARCH'},
             {label: 'Repeat',       value: 'REPEAT'},
             {label: 'Replace',      value: 'REPLACE'},
+            {label: 'Replace All',      value: 'REPLACEALL'},
+            {label: 'Slice',      value: 'SLICE'},
             {label: 'Lowercase',    value: 'LOWERCASE'},
+            {label: 'Locale Lowercase',    value: 'LOCALELOWERCASE'},
             {label: 'Uppercase',    value: 'UPPERCASE'},
+            {label: 'Locale Uppercase',    value: 'LOCALEUPPERCASE'},
             {label: 'Trim',         value: 'TRIM'},
+            {label: 'Locale Compare',    value: 'LOCALECOMPARE'},
+            {label: 'Match',         value: 'MATCH'},
+            {label: 'Split',         value: 'SPLIT'},
             {label: 'Starts With',  value: 'STARTSWITH'},
             {label: 'Ends With',    value: 'ENDSWITH'}
         ];
@@ -159,12 +169,11 @@
                             if(vm.statement != null) {
                                 vm.statementType = getType(vm.statementTypes, vm.statement.statementType);
 
-                                if (vm.statementType === 'STRING')
-                                    vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operationType);
-
                                 if (vm.statement.statementType === 'DATE') {
                                     vm.dateOperation = getType(vm.dateOperations, vm.statement.dateStatement.operation);
                                 }
+
+                                vm.stringOperation = getType(vm.stringOperations, vm.statement.stringStatement.operation);
                             }
                         },
                         function(err) {
@@ -224,8 +233,9 @@
             vm.statement.statementType = vm.statementType.value;
 
             //AW: Specific to String statements
-            if(vm.statement.statementType === "STRING")
-                vm.statement.stringStatement.operationType = vm.stringOperation.value;
+            if(vm.statement.statementType === "STRING") {
+                vm.statement.stringStatement.operation = vm.stringOperation.value;
+            }
 
             if (vm.statementType.label === "If")
                 vm.statement.ifStatement.comparator = vm.statement.ifStatement.comparator.label;
@@ -246,7 +256,6 @@
                     }
                 );
         }
-
     }
 
     function ChooseStatementController($routeParams, ScriptService, $location) {
@@ -285,4 +294,5 @@
             delete this.statement.dateStatement[names[n]];
         }
     }
+
 })();

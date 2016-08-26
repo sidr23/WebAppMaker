@@ -230,6 +230,10 @@ th {
     overflow: auto;
     max-height:200px;
 }
+.wam-literal{
+    border-bottom-style: ridge;
+    border-bottom-color: aliceblue;
+}
 
 .customPadding {
     padding-right: 10px;
@@ -318,4 +322,12 @@ th {
     .wam-widget-tool-name {
         font-size: 10px;
     }
+}
+
+.thumbnail-preview {
+    max-width: 400px;
+    max-height: 225px;
+    vertical-align: middle;
+    margin: auto;
+    display: block;
 }
