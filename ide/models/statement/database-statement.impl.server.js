@@ -36,23 +36,23 @@ module.exports = function (db) {
             case 'SELECT' :
                 var temp ="";
 
-                    dbStmtModel.selectRecords(collectionName, filter).then(function (results) {
-                        result = results;
-                        model[statement.output] = result;
-                    }, function (err) {
-                        return err;
-                    });
+                dbStmtModel.selectRecords(collectionName, filter).then(function (results) {
+                    result = results;
+                    model[statement.output] = result;
+                }, function (err) {
+                    return err;
+                });
 
                 break;
             case 'INSERT' :
                 var temp ="";
 
-                     dbStmtModel.insertRecords(collectionName, record).then(function (results) {
-                         console.log("results",results);
-                        result = results;
-                     }, function (err) {
-                         return err;
-                     });
+                dbStmtModel.insertRecords(collectionName, record).then(function (results) {
+                    console.log("results",results);
+                    result = results;
+                }, function (err) {
+                    return err;
+                });
                 model[statement.output] = result;
                 break;
             case 'UPDATE' :

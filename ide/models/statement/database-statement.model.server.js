@@ -46,16 +46,16 @@ module.exports = function(db){
 
         var deferred = q.defer();
         db.collection(operand1).findAndModify({
-            query:operand2,
-            update:{$set:operand3}},
+                query:operand2,
+                update:{$set:operand3}},
             function (err,docs) {
-            if(err) {
-                deferred.reject(err);
-            }
-            else {
-                deferred.resolve(docs);
-            }
-        });
+                if(err) {
+                    deferred.reject(err);
+                }
+                else {
+                    deferred.resolve(docs);
+                }
+            });
         return deferred.promise
 
     }
