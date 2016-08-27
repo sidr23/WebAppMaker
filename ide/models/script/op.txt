@@ -1,0 +1,16 @@
+{ A: true, B: false, D: 7, E: 5, R: false }
+The result of A AND B
+false
+The result of C OR B is 
+false
+The result of C XOR B is 
+false
+The result of C NAND B is 
+true
+The result of C NOR B is 
+true
+The result of NOT of B is 
+true
+The result of EVAL expr is
+false
+{ A: true, B: false, D: 7, E: 5, R: false, C: false, F: true }

@@ -1,129 +1,133 @@
-
-
 var statements = [
     {   
-        label:'start',
-        type:'BOOLEAN',
-        operation:'AND',
-        input:[
-            {variable:'A'},
-            {variable: 'B'}],
+        label : 'start',
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'AND',
+            operand1  : {variable:'A'},
+            operand2  : {variable:'B'},
+		},
         output:'C'
     },
     { // Display AND of A and B
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of A AND B'}]
     },
 	{
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'C'}]
     },
-    {
-        type: 'BOOLEAN',
-        operation: 'OR',
-        input:[
-            {variable:'C'},
-            {variable: 'B'}],
-        output: 'F'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'OR',
+            operand1  : {variable:'C'},
+            operand2  : {variable:'B'},
+		},
+        output:'F'
     },
     { // Displays the above literal
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of C OR B is '}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'F'}]
     },
-	{
-        type: 'BOOLEAN',
-        operation: 'XOR',
-        input:[
-            {variable:'C'},
-            {variable: 'B'}],
-        output: 'F'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'XOR',
+            operand1  : {variable:'C'},
+            operand2  : {variable:'B'}
+		},
+        output:'F'
     },
     { // Displays the above literal
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of C XOR B is '}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'F'}]
     },
-	{
-        type: 'BOOLEAN',
-        operation: 'NAND',
-        input:[
-            {variable:'C'},
-            {variable: 'B'}],
-        output: 'F'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'NAND',
+            operand1  : {variable:'C'},
+            operand2  : {variable:'B'}
+		},
+        output:'F'
     },
     { // Displays the above literal
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of C NAND B is '}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'F'}]
     },
-	{
-        type: 'BOOLEAN',
-        operation: 'NOR',
-        input:[
-            {variable:'C'},
-            {variable: 'B'}],
-        output: 'F'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'NOR',
+            operand1  : {variable:'C'},
+            operand2  : {variable:'B'},
+		},
+        output:'F'
     },
     { // Displays the above literal
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of C NOR B is '}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'F'}]
     },
-	{
-        type: 'BOOLEAN',
-        operation: 'NOT',
-        input:[
-            {variable: 'B'}],
-        output: 'F'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'NOT',
+            operand1  : {variable:'B'}
+		},
+        output:'F'
     },
     { // Displays the above literal
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{literal: 'The result of NOT of B is '}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'F'}]
     },
-	{
-        type: 'BOOLEAN',
-        operation: 'Eval',
-        input:[
-            {variable:'R'}
-        ],
-        output: 'C'
+	{ 
+        statementType : 'BOOLEAN',
+		booleanStatement : {
+			operation : 'EVAL',
+            operand1  : {variable:'R'}
+		},
+        output:'C'
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
-        input:[{literal: 'The result of eval expr is'}]
+        input:[{literal: 'The result of EVAL expr is'}]
     },
     {
-        type: 'CONSOLE',
+        statementType: 'CONSOLE',
         operation: 'LOG',
         input:[{variable: 'C'}]
     }
@@ -140,10 +144,9 @@ var model = {
     D: 7,
 	E : 5,
 	R : ((5>6)||(2==2)&&false)
-
 };
 
-var runner = require('../script/script.runner.server')();
 console.log(model);
+var runner = require('../script/script.runner.server')();
 runner.run(script, model);
 console.log(model);
