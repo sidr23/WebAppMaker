@@ -20,7 +20,8 @@
     "passport-google-oauth": "^1.0.0",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.4",
-    "q": "^1.4.1"
+    "q": "^1.4.1",
+    "webshot": "^0.18.0"
   },
   "devDependencies": {},
   "scripts": {

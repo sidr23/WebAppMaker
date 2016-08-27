@@ -1,4 +1,5 @@
 var mongoose = require("mongoose");
+var webshot = require("webshot");
 
 module.exports = function (app, model) {
 
@@ -13,6 +14,12 @@ module.exports = function (app, model) {
     function updateWebsite (req, res) {
         var website = req.body;
         var websiteId = req.params.websiteId;
+
+        var url = "http://127.0.0.1:3000/ide/#/developer/"+website._developer+"/website/"+websiteId+"/page";
+        var path = "public/thumbnails/"+website._developer+"/"+websiteId+".png";
+
+        saveScreenshot(req, url, path);
+        
         websiteModel
             .updateWebsite(websiteId, website)
             .then(
@@ -81,4 +88,25 @@ module.exports = function (app, model) {
                 }
             );
     }
-}
+
+    function saveScreenshot(req, url, path) {
+        var options = {
+            renderDelay: !req.query.delay ? 100 : req.query.delay,
+            phantomConfig: {
+                'ignore-ssl-errors': 'true',
+                'local-to-remote-url-access': 'true',
+                'web-security': 'false'
+            },
+            headers: req.headers,
+            cookies: req.cookies,
+            sessionID: req.sessionID,
+            session: req.session,
+            quality: 50
+        };
+
+        webshot(url, path, options, function(err) {
+
+        });
+    }
+
+};
