@@ -6,8 +6,8 @@ module.exports = function() {
         'CONSOLE': require('../statement/console-statement.impl.server')(),
         'FLOW': require('../statement/flow-statement.impl.server')(),
         'DATE': require('../statement/date-statement.impl.server')(),
-        'ARRAY': require('../statement/array-statement.impl.server')(),
         'DATABASE': require('../statement/database-statement.impl.server')(db_model.mongo)
+        'BOOLEAN': require('../statement/boolean-statement.impl.server')()
     };
 
     var api = {
