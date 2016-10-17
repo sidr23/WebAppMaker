@@ -82,10 +82,11 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites">
                     <div class="thumbnail">
-                        <img src="" alt="...">
+                        <img class="img-responsive" src="http://placehold.it/300x300" alt="...">
                         <div class="caption">
                             <p>
-                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
+                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page"
+                                   class="pull-left">
                                     {{website.name}}
                                 </a>
 
@@ -120,9 +121,9 @@
             <div class="form-group">
                 <label for="description">Description</label>
                 <textarea ng-model="model.website.description"
-              rows="5" id="description"
-              class="form-control"
-              placeholder="Description"></textarea>
+                          rows="5" id="description"
+                          class="form-control"
+                          placeholder="Description"></textarea>
             </div>
 
 
@@ -143,7 +144,6 @@
                           class="form-control"
                           placeholder="Description"></textarea>
             </div>
-
 
 
             <div class="form-group">

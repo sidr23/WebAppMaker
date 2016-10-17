@@ -42,8 +42,6 @@
     </div>
 </nav>
 
-
-
 <div class="row">
     <!--Hidden in extra small devices-->
     <div class="col-sm-4  hidden-xs">
@@ -63,8 +61,8 @@
                     </a>
                 </div>
                 <div class="col-xs-2">
-                    <a  href="#/developer/{{model.developerId}}/website/{{model.websiteId}}/page/{{page._id}}"
-                        class="pull-right">
+                    <a href="#/developer/{{model.developerId}}/website/{{model.websiteId}}/page/{{page._id}}"
+                       class="pull-right">
                         <span class="glyphicon glyphicon-cog"></span>
                     </a>
                 </div>
@@ -74,7 +72,7 @@
                 <div class="row">
                     <div class="col-sm-6 col-md-4" ng-repeat="page in model.pages">
                         <div class="thumbnail">
-                            <img src="" alt="...">
+                            <img class="img-responsive" src="http://placehold.it/300x300" alt="...">
                             <div class="caption">
                                 <p>
                                     <a href="#/developer/{{model.developerId}}/website/{{model.websiteId}}/page/{{page._id}}/widget"

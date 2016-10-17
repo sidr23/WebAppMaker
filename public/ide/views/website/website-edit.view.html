@@ -74,10 +74,11 @@
             <div class="row">
                 <div class="col-sm-6 col-md-4" ng-repeat="website in model.websites">
                     <div class="thumbnail">
-                        <img src="" alt="...">
+                        <img class="img-responsive" src="http://placehold.it/300x300" alt="...">
                         <div class="caption">
                             <p>
-                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page" class="pull-left">
+                                <a href="#/developer/{{model.developerId}}/website/{{website._id}}/page"
+                                   class="pull-left">
                                     {{website.name}}
                                 </a>
 
@@ -94,7 +95,6 @@
 
     </div>
 
-
     <!--Always visible in all devices-->
     <div class="right-scroll col-xs-12 col-sm-8">
         <div ng-if="model.error" class="alert alert-danger" role="alert">
@@ -107,16 +107,16 @@
                    class="form-control"
                    id="websiteName"
                    placeholder="Name"
-                   type="text" />
+                   type="text"/>
         </div>
 
         <div class="form-group">
             <label for="websiteDescription">Website Description</label>
-<textarea ng-model="model.website.description"
-          rows="5"
-          id="websiteDescription"
-          class="form-control"
-          placeholder="Description"></textarea>
+            <textarea ng-model="model.website.description"
+                      rows="5"
+                      id="websiteDescription"
+                      class="form-control"
+                      placeholder="Description"></textarea>
         </div>
 
         <button ng-click="model.removeWebsite(model.website)"
@@ -125,6 +125,8 @@
         </button>
 
     </div>
+
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-bottom jga">
 
